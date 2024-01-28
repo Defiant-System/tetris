@@ -1,0 +1,79 @@
+
+content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 11px;
+
+	.view-game {
+		position: relative;
+		display: flex;
+
+		.main {
+			position: relative;
+			width: 269px;
+			height: 530px;
+			border-radius: 6px;
+			background: #000;
+			--gc: #151515;
+			
+			&:before {
+				content: "";
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				right: 5px;
+				bottom: 5px;
+				border-radius: 2px;
+				box-shadow: 0 0 0 2px var( --gc );
+				background-image: repeating-linear-gradient(90deg, var( --gc ) 0px, var( --gc ) 1px, transparent 1px, transparent 26px),
+								repeating-linear-gradient(0deg, var( --gc ) 0px, var( --gc ) 1px, transparent 1px, transparent 26px);
+				background-position: -1px 0;
+			}
+		}
+
+		.side {
+			flex: 1;
+			margin-left: 13px;
+		
+			.next {
+				background: #000;
+				position: relative;
+				width: 104px;
+				height: 104px;
+				margin-bottom: 29px;
+				border-radius: 4px;
+			}
+
+			.hold {
+				background: #000;
+				position: relative;
+				width: 104px;
+				height: 104px;
+				margin-bottom: 29px;
+				border-radius: 4px;
+			}
+
+			.score {
+				flex: 1;
+				width: 104px;
+
+				h2 {
+					font-size: 13px;
+					font-weight: 400;
+					margin-bottom: 19px;
+
+					span {
+						display: block;
+						background: #000;
+						border-radius: 4px;
+						padding: 5px 7px;
+						margin-top: 3px;
+					}
+				}
+			}
+		}
+	}
+}
