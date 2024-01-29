@@ -29,7 +29,7 @@ let Game = {
 
 				Arena.draw();
 				Player.draw();
-				break;
+				/* falls through */
 			case "play":
 				this.fpsControl.fps = 60;
 				this.fpsControl.start();
