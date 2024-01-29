@@ -29,16 +29,17 @@ let Arena = {
 		levels[i].slice(1).map((row, y) =>
 				row.split("").map((v, x) =>
 					this.matrix[y][x] = +v));
+		Player.level(i);
+		// this.draw();
+		// Player.draw();
 	},
 	reset() {
 		// blank level
 		this.matrix.forEach(row => row.fill(0));
 	},
-	draw() {
-		// reset canvas
-		this.cvs.attr({ width: this.width });
+	draw(ctx) {
 		// draw matrix
-		this.drawMatrix(this.matrix, { x: 0, y: 0 });
+		this.drawMatrix(ctx, this.matrix, { x: 0, y: 0 });
 	},
 	createMatrix(w, h) {
 		let matrix = [];
@@ -61,9 +62,8 @@ let Arena = {
 	randomPiece(type) {
 		return this.createPiece(type || pieceArray[Math.floor(Math.random() * pieceArray.length)]);
 	},
-	drawMatrix(matrix, offset, color) {
-		let ctx = this.ctx,
-			scale = 26,
+	drawMatrix(ctx, matrix, offset, color) {
+		let scale = 26,
 			sMap = [[25, 0], [50, 0], [75, 0], [0, 25], [25, 25], [50, 25], [75, 25], [0, 50], [0, 0]];
 
 		matrix.forEach((row, y) => {

@@ -20,12 +20,12 @@ let Player = {
 		}
 		return false;
 	},
-	draw() {
-		Arena.drawMatrix(this.matrix, { x: this.pos.x, y: this.pos.y });
+	draw(ctx) {
+		Arena.drawMatrix(ctx, this.matrix, { x: this.pos.x, y: this.pos.y });
 		// Ghost piece
 		for(let y=0; y<20; y++) {
 			if (this.collisionCheck({ x: this.pos.x, y: y }) && y >= this.pos.y) {
-				Arena.drawMatrix(this.matrix, { x: this.pos.x, y: y - 1 }, 7);
+				Arena.drawMatrix(ctx, this.matrix, { x: this.pos.x, y: y - 1 }, 7);
 				return false;
 			}
 		}

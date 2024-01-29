@@ -13,8 +13,15 @@ let Game = {
 				if (dropCount > Math.max((dropInterval - (level * 60)), 60)) {
 					Player.drop();
 				}
-				Arena.draw();
-				Player.draw();
+				let cvs = Arena.cvs,
+					ctx = Arena.ctx,
+					width = Arena.width;
+				// reset canvas
+				cvs.attr({ width });
+				// draw game
+				Arena.draw(ctx);
+				Player.draw(ctx);
+				FX.draw(ctx);
 			}
 		});
 	},
@@ -25,10 +32,6 @@ let Game = {
 		switch (this._state) {
 			case "test":
 				Arena.level(level);
-				Player.level(level);
-
-				Arena.draw();
-				Player.draw();
 				/* falls through */
 			case "play":
 				this.fpsControl.fps = 60;

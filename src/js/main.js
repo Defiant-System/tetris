@@ -1,7 +1,11 @@
 
+@import "./classes/particle.js"
+
 @import "./modules/levels.js"
+@import "./modules/utils.js"
 @import "./modules/arena.js"
 @import "./modules/player.js"
+@import "./modules/fx.js"
 @import "./modules/game.js"
 
 @import "./modules/test.js"
