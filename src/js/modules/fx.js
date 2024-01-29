@@ -2,12 +2,14 @@
 let FX = {
 	particles: [],
 	explode(list) {
-		var particleCount = 30;
-		while(particleCount--) {
-			let x = 50,
-				y = 50;
-			this.particles.push(new Particle(this, x, y));
-		}
+		list.map(cell => {
+			var particleCount = 4,
+				x = (cell[0] * 26) + 13,
+				y = (cell[1] * 26) + 13;
+			while(particleCount--) {
+				this.particles.push(new Particle(this, x, y));
+			}
+		});
 	},
 	add(item) {
 		

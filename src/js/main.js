@@ -45,6 +45,10 @@ const tetris = {
 					case "p": Game.setState("pause"); break;
 				}
 				break;
+			// test 
+			case "explosion":
+				FX.explode([[event.offsetX / 26 | 0, event.offsetY / 26 | 0]]);
+				break;
 			// custom events
 			case "new-game":
 				Game.setState("new");
