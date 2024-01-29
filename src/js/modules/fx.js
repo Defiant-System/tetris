@@ -3,7 +3,7 @@ let FX = {
 	particles: [],
 	explode(list) {
 		list.map(cell => {
-			var particleCount = 4,
+			var particleCount = 5,
 				x = (cell[0] * 26) + 13,
 				y = (cell[1] * 26) + 13;
 			while(particleCount--) {
