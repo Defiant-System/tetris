@@ -25,27 +25,19 @@ const tetris = {
 			case "window.keydown":
 				switch (event.char) {
 					case "w":
-					case "up":
-						Player.rotate();
-						break;
+					case "up": Player.rotate(); break;
 					case "s":
-					case "down":
-						Player.drop();
-						break;
+					case "down": Player.drop(); break;
 					case "a":
-					case "left":
-						Player.shift(-1);
-						break;
+					case "left": Player.shift(-1); break;
 					case "d":
-					case "right":
-						Player.shift(1);
-						break;
-					case "esc":
-						Game.setState("new");
-						break;
-					case "p":
-						Game.setState("pause");
-						break;
+					case "right": Player.shift(1); break;
+
+					case "space": Player.hardDrop(); break;
+					case "shift": Player.switchPiece(); break;
+					
+					case "esc": Game.setState("new"); break;
+					case "p": Game.setState("pause"); break;
 				}
 				break;
 			// custom events

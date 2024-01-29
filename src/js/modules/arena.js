@@ -56,16 +56,16 @@ let Arena = {
 	createPiece(type) {
 		switch(type) {
 			case "O": return [[1,1],[1,1]];
-			case "T": return [[2,2,2],[0,2,0]];
+			case "T": return [[0,0,0],[2,2,2],[0,2,0]];
 			case "L": return [[0,3,0],[0,3,0],[0,3,3]];
-			case "J": return [[0,4,0],[0,4,0],[4,4,0]];
-			case "I": return [[5,5,5,5]];
+			case "I": return [[0,0,0,0],[4,4,4,4],[0,0,0,0],[0,0,0,0]];
+			case "J": return [[0,5,0],[0,5,0],[5,5,0]];
 			case "S": return [[0,6,6],[6,6,0],[0,0,0]];
 			case "Z": return [[7,7,0],[0,7,7],[0,0,0]];
 		}
 	},
-	randomPiece() {
-		return this.createPiece(pieceArray[Math.floor(Math.random() * pieceArray.length)]);
+	randomPiece(type) {
+		return this.createPiece(type || pieceArray[Math.floor(Math.random() * pieceArray.length)]);
 	},
 	drawMatrix(matrix, offset, color) {
 		let ctx = this.ctx,

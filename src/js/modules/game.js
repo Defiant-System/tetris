@@ -8,7 +8,11 @@ let Game = {
 		// FPS start here
 		let Self = this;
 		this.fpsControl = karaqu.FpsControl({
-			callback(n) {
+			callback(time, delta) {
+				dropCount += delta;
+				if (dropCount > Math.max((dropInterval - (level * 60)), 60)) {
+					Player.drop();
+				}
 				Arena.draw();
 				Player.draw();
 			}
