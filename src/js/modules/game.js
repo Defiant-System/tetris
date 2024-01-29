@@ -18,11 +18,18 @@ let Game = {
 			}
 		});
 	},
-	setState(name) {
+	setState(name, level) {
 		let currState = this._state;
 		this._state = name;
 
 		switch (this._state) {
+			case "test":
+				Arena.level(level);
+				Player.level(level);
+
+				Arena.draw();
+				Player.draw();
+				break;
 			case "play":
 				this.fpsControl.fps = 60;
 				this.fpsControl.start();
@@ -35,7 +42,7 @@ let Game = {
 		}
 	},
 	reset() {
-		Arena.reset(0);
+		Arena.reset();
 		Player.reset();
 		dropCount = 0;
 		linesCleared = 0;

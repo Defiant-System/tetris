@@ -60,13 +60,19 @@ let Player = {
 			}); 
 		});
 	},
+	level(i) {
+		let data = levels[i][0];
+		this.nextPiece = data.piece;
+		this.matrix = this.nextPiece;
+		this.pos = data.pos;
+	},
 	reset() {
 		this.score = 0;
 		this.nextPiece = Arena.randomPiece();
 		this.heldPiece = Arena.randomPiece();
 		this.matrix = this.nextPiece;
 		this.pos.y = 0;
-		this.pos.x = Math.floor(Arena.matrix[0].length/2) - Math.floor(this.matrix[0].length/2);
+		this.pos.x = (Arena.matrix[0].length >> 1) - (this.matrix[0].length >> 1);
 		
 		// Game Over check
 		if (this.collisionCheck()) {

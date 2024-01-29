@@ -25,17 +25,14 @@ let Arena = {
 
 		this.matrix = this.createMatrix(10, 20);
 	},
-	reset(i) {
-		if (i !== undefined) {
-			levels[i].map((row, y) => {
-				row.split("").map((v, x) => {
-					this.matrix[y][x] = +v;
-				});
-			});
-		} else {
-			// blank level
-			this.matrix.forEach(row => row.fill(0));
-		}
+	level(i) {
+		levels[i].slice(1).map((row, y) =>
+				row.split("").map((v, x) =>
+					this.matrix[y][x] = +v));
+	},
+	reset() {
+		// blank level
+		this.matrix.forEach(row => row.fill(0));
 	},
 	draw() {
 		// reset canvas
@@ -67,7 +64,7 @@ let Arena = {
 	drawMatrix(matrix, offset, color) {
 		let ctx = this.ctx,
 			scale = 26,
-			sMap = [[25, 0], [50, 0], [75, 0], [0, 25], [25, 25], [50, 25], [75, 25], [0, 50]];
+			sMap = [[25, 0], [50, 0], [75, 0], [0, 25], [25, 25], [50, 25], [75, 25], [0, 50], [0, 0]];
 
 		matrix.forEach((row, y) => {
 			row.forEach((v, x) => {
