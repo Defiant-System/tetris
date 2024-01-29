@@ -1,4 +1,5 @@
 
+@import "./modules/levels.js"
 @import "./modules/arena.js"
 @import "./modules/player.js"
 @import "./modules/game.js"
@@ -35,7 +36,7 @@ const tetris = {
 
 					case "space": Player.hardDrop(); break;
 					case "shift": Player.switchPiece(); break;
-					
+
 					case "esc": Game.setState("new"); break;
 					case "p": Game.setState("pause"); break;
 				}

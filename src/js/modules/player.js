@@ -70,7 +70,7 @@ let Player = {
 		
 		// Game Over check
 		if (this.collisionCheck()) {
-			reset();
+			Game.setState("game-over");
 		}
 	},
 	rotate(dir) {

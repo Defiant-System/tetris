@@ -7,7 +7,7 @@ content {
 	bottom: 0;
 	padding: 13px;
 	font-family: BebasNeueRegular, sans-serif;
-	--gc: #151515;
+	--gc: #22222299;
 
 	h2 {
 		font-size: 18px;
@@ -23,12 +23,12 @@ content {
 			position: relative;
 			width: 269px;
 			height: 529px;
-			border-radius: 6px;
+			border-radius: 5px;
 			background: #000;
-			// background: radial-gradient(#151515, #000);
+			// background: radial-gradient(ellipse at center, #1b1b1b, #000);
 			// background-position: center center;
 			// background-repeat: no-repeat;
-			// background-size: 220%;
+			// background-size: 240%;
 			
 			&:before {
 				content: "";
@@ -37,7 +37,7 @@ content {
 				left: 5px;
 				width: 259px;
 				height: 519px;
-				border-radius: 2px;
+				border-radius: 3px;
 				box-shadow: 0 0 0 2px var( --gc );
 				background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px),
 								repeating-linear-gradient(0deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px);
@@ -58,6 +58,7 @@ content {
 				position: relative;
 				top: 5px;
 				left: 5px;
+				border-radius: 3px;
 			}
 		}
 
@@ -73,8 +74,7 @@ content {
 				width: 124px;
 				height: 144px;
 				padding: 5px 3px 3px;
-				margin-top: 3px;
-				margin-bottom: 19px;
+				margin-bottom: 21px;
 				border-radius: 4px;
 
 				&:before {
@@ -86,8 +86,6 @@ content {
 					height: 114px;
 					border-radius: 2px;
 					box-shadow: 0 0 0 2px var( --gc );
-					// background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px),
-					// 				repeating-linear-gradient(0deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px);
 				}
 
 				&:after {

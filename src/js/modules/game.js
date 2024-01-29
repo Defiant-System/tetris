@@ -30,12 +30,12 @@ let Game = {
 			case "pause":
 				this.fpsControl.stop();
 				break;
-			case "over":
+			case "game-over":
 				break;
 		}
 	},
 	reset() {
-		Arena.reset();
+		Arena.reset(0);
 		Player.reset();
 		dropCount = 0;
 		linesCleared = 0;

@@ -8,7 +8,7 @@ let pieceArray = ["T", "O", "I", "L", "J", "S", "Z"];
 // Player Piece drop timer
 let lastTime = 0;
 let dropCount = 0;
-let dropInterval = 1000;
+let dropInterval = 500;
 
 let sprite = new Image;
 sprite.onload = () => {};
@@ -25,20 +25,17 @@ let Arena = {
 
 		this.matrix = this.createMatrix(10, 20);
 	},
-	reset() {
-		this.matrix.forEach(row => row.fill(0));
-		// temp
-		// [...Array(7)].map((a,i) => {
-		// 	this.matrix[19-i][0] = i+1;
-		// 	this.matrix[19-i][1] = i+1;
-		// 	this.matrix[19-i][2] = i+1;
-		// 	this.matrix[19-i][3] = i+1;
-		// 	this.matrix[19-i][4] = i+1;
-		// 	this.matrix[19-i][5] = i+1;
-		// 	this.matrix[19-i][6] = i+1;
-		// 	this.matrix[19-i][7] = i+1;
-		// 	this.matrix[19-i][8] = i+1;
-		// });
+	reset(i) {
+		if (i !== undefined) {
+			levels[i].map((row, y) => {
+				row.split("").map((v, x) => {
+					this.matrix[y][x] = +v;
+				});
+			});
+		} else {
+			// blank level
+			this.matrix.forEach(row => row.fill(0));
+		}
 	},
 	draw() {
 		// reset canvas
