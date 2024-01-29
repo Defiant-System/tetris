@@ -26,19 +26,19 @@ const tetris = {
 				switch (event.char) {
 					case "w":
 					case "up":
-						//Keys.up = 1;
+						Player.rotate();
 						break;
 					case "s":
 					case "down":
-						//Keys.down = 1;
+						Player.drop();
 						break;
 					case "a":
 					case "left":
-						//Keys.left = 1;
+						Player.shift(-1);
 						break;
 					case "d":
 					case "right":
-						//Keys.right = 1;
+						Player.shift(1);
 						break;
 					case "esc":
 						Game.setState("new");

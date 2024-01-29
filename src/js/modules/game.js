@@ -10,7 +10,7 @@ let Game = {
 		this.fpsControl = karaqu.FpsControl({
 			callback(n) {
 				Arena.draw();
-				// Player.draw();
+				Player.draw();
 			}
 		});
 	},

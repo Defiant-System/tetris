@@ -11,8 +11,8 @@ let Player = {
 	collisionCheck(pos) {
 		let m = this.matrix,
 			o = pos || this.pos;
-		for(let y=0; y<m.length; ++y) {
-			for(let x=0; x<m[y].length; ++x) {
+		for(let y=0, yl=m.length; y<yl; ++y) {
+			for(let x=0, xl=m[y].length; x<xl; ++x) {
 				if (m[y][x] !== 0 && (Arena.matrix[y + o.y] && Arena.matrix[y + o.y][x + o.x]) !== 0) {
 					return true;
 				}
@@ -23,12 +23,12 @@ let Player = {
 	draw() {
 		Arena.drawMatrix(this.matrix, { x: this.pos.x, y: this.pos.y });
 		// Ghost piece
-		// for(let y=0; y<20; y++) {
-		// 	if (this.collisionCheck({ x: this.pos.x, y: y }) && y >= this.pos.y) {
-		// 		Arena.drawMatrix(this.matrix, { x: this.pos.x, y: y - 1 }, "rgba(255,255,255,0.15)");
-		// 		return false;
-		// 	}
-		// }
+		for(let y=0; y<20; y++) {
+			if (this.collisionCheck({ x: this.pos.x, y: y }) && y >= this.pos.y) {
+				Arena.drawMatrix(this.matrix, { x: this.pos.x, y: y - 1 }, 7);
+				return false;
+			}
+		}
 	},
 	drop() { 
 		this.pos.y++; 
@@ -89,7 +89,7 @@ let Player = {
 		if (dir > 0) {
 			this.matrix.forEach(row => row.reverse());
 		} else {
-			matrix.reverse();
+			this.matrix.reverse();
 		}
 		
 		// collision check in case we rotate into the wall/another piece
@@ -121,7 +121,7 @@ let Player = {
 			this.pos.x += offset;
 			offset = -(offset + (offset > 0 ? 1 : -1));
 			if (offset > this.matrix[0].length) {
-				player.switchPiece();
+				this.switchPiece();
 				this.pos.x = pos;
 				return;
 			}
