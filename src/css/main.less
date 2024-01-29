@@ -13,8 +13,8 @@ content {
 
 		.main {
 			position: relative;
-			width: 270px;
-			height: 530px;
+			width: 269px;
+			height: 529px;
 			border-radius: 6px;
 			background: #000;
 			// background: radial-gradient(#151515, #000);
@@ -28,13 +28,12 @@ content {
 				position: absolute;
 				top: 5px;
 				left: 5px;
-				right: 5px;
-				bottom: 5px;
+				width: 259px;
+				height: 519px;
 				border-radius: 2px;
 				box-shadow: 0 0 0 2px var( --gc );
-				background-image: repeating-linear-gradient(90deg, var( --gc ) 0px, var( --gc ) 1px, transparent 1px, transparent 26px),
-								repeating-linear-gradient(0deg, var( --gc ) 0px, var( --gc ) 1px, transparent 1px, transparent 26px);
-				background-position: -1px 0;
+				background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px),
+								repeating-linear-gradient(0deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px);
 			}
 
 			&:after {

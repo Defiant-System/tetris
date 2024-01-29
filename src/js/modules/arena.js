@@ -28,13 +28,17 @@ let Arena = {
 	reset() {
 		this.matrix.forEach(row => row.fill(0));
 		// temp
-		this.matrix[16][0] = 0;
-		this.matrix[16][1] = 1;
-		this.matrix[16][2] = 2;
-		this.matrix[16][3] = 3;
-		this.matrix[16][4] = 4;
-		this.matrix[16][5] = 5;
-		this.matrix[16][6] = 6;
+		[...Array(7)].map((a,i) => {
+			this.matrix[19-i][0] = i+1;
+			this.matrix[19-i][1] = i+1;
+			this.matrix[19-i][2] = i+1;
+			this.matrix[19-i][3] = i+1;
+			this.matrix[19-i][4] = i+1;
+			this.matrix[19-i][5] = i+1;
+			this.matrix[19-i][6] = i+1;
+			this.matrix[19-i][7] = i+1;
+			this.matrix[19-i][8] = i+1;
+		});
 	},
 	draw() {
 		// reset canvas
@@ -73,7 +77,7 @@ let Arena = {
 			row.forEach((v, x) => {
 				if (v !== 0) {
 					ctx.drawImage(sprite,
-						sMap[v][0], sMap[v][1], 25, 25,
+						sMap[v-1][0], sMap[v-1][1], 25, 25,
 						(x + offset.x) * scale, (y + offset.y) * scale, scale-1, scale-1);
 				}
 			});
