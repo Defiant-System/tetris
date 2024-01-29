@@ -20,15 +20,15 @@ let Player = {
 		}
 		return false;
 	},
-	draw() { 
-		Arena.drawMatrix(this.matrix, { x: this.pos.x + Arena.pos.x, y: this.pos.y + Arena.pos.y });
+	draw() {
+		Arena.drawMatrix(this.matrix, { x: this.pos.x, y: this.pos.y });
 		// Ghost piece
-		for(let y=0; y<20; y++) {
-			if (this.collisionCheck({ x: this.pos.x, y: y }) && y >= this.pos.y) {
-				Arena.drawMatrix(this.matrix, { x: this.pos.x + Arena.pos.x, y: y + Arena.pos.y - 1 }, "rgba(255,255,255,0.15)");
-				return false;
-			}
-		}
+		// for(let y=0; y<20; y++) {
+		// 	if (this.collisionCheck({ x: this.pos.x, y: y }) && y >= this.pos.y) {
+		// 		Arena.drawMatrix(this.matrix, { x: this.pos.x, y: y - 1 }, "rgba(255,255,255,0.15)");
+		// 		return false;
+		// 	}
+		// }
 	},
 	drop() { 
 		this.pos.y++; 
@@ -61,8 +61,10 @@ let Player = {
 		});
 	},
 	reset() {
-		this.matrix = this.nextPiece;
+		this.score = 0;
 		this.nextPiece = Arena.randomPiece();
+		this.heldPiece = Arena.randomPiece();
+		this.matrix = this.nextPiece;
 		this.pos.y = 0;
 		this.pos.x = Math.floor(Arena.matrix[0].length/2) - Math.floor(this.matrix[0].length/2);
 		
