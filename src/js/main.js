@@ -1,4 +1,8 @@
 
+@import "./modules/arena.js"
+@import "./modules/player.js"
+@import "./modules/game.js"
+
 @import "./modules/test.js"
 
 
@@ -6,6 +10,9 @@ const tetris = {
 	init() {
 		// fast references
 		this.content = window.find("content");
+
+		Arena.init();
+		Game.init();
 
 		// DEV-ONLY-START
 		Test.init(this);

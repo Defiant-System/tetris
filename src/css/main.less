@@ -126,10 +126,19 @@ content {
 		}
 	}
 
+	b {
+		background: url(~/img/sprite.png) no-repeat;
+		position: absolute;
+		top: 40px;
+		left: 40px;
+		width: 25px;
+		height: 25px;
+	}
+
 	.shape {
 		position: absolute;
 		
-		&.s1 {
+		&[data-shape="L"] {
 			top: 20px;
 			left: 34px;
 
@@ -140,7 +149,7 @@ content {
 			b:nth-child(4) { top: 50px; left: 25px; }
 		}
 		
-		&.s2 {
+		&[data-shape="O"] {
 			top: 34px;
 			left: 31px;
 
@@ -151,7 +160,7 @@ content {
 			b:nth-child(4) { top: 25px; left: 25px; }
 		}
 		
-		&.s3 {
+		&[data-shape="Z"] {
 			top: 34px;
 			left: 19px;
 
@@ -162,40 +171,40 @@ content {
 			b:nth-child(4) { top: 25px; left: 50px; }
 		}
 		
-		&.s4 {
+		&[data-shape="S"] {
 			top: 34px;
 			left: 19px;
 
-			b { background-position: 0 -25px; }
+			b { background-position: -75px -25px; }
 			b:nth-child(1) { top: 0; left: 25px; }
 			b:nth-child(3) { top: 0; left: 50px; }
 			b:nth-child(2) { top: 25px; left: 0; }
 			b:nth-child(4) { top: 25px; left: 25px; }
 		}
 		
-		&.s5 {
+		&[data-shape="J"] {
 			top: 19px;
 			left: 31px;
 
-			b { background-position: -25px -25px; }
+			b { background-position: 0 -25px; }
 			b:nth-child(1) { top: 0; left: 25px; }
 			b:nth-child(2) { top: 25px; left: 25px; }
 			b:nth-child(3) { top: 50px; left: 25px; }
 			b:nth-child(4) { top: 50px; left: 0; }
 		}
 		
-		&.s6 {
+		&[data-shape="T"] {
 			top: 20px;
 			left: 36px;
 
-			b { background-position: -75px -25px; }
+			b { background-position: -25px -25px; }
 			b:nth-child(1) { top: 0; left: 0; }
 			b:nth-child(2) { top: 25px; left: 0; }
 			b:nth-child(3) { top: 50px; left: 0; }
 			b:nth-child(4) { top: 25px; left: 25px; }
 		}
 		
-		&.s7 {
+		&[data-shape="I"] {
 			top: 7px;
 			left: 44px;
 
@@ -205,14 +214,5 @@ content {
 			b:nth-child(3) { top: 50px; left: 0; }
 			b:nth-child(4) { top: 75px; left: 0; }
 		}
-	}
-
-	b {
-		background: url(~/img/sprite.png) no-repeat;
-		position: absolute;
-		top: 40px;
-		left: 40px;
-		width: 25px;
-		height: 25px;
 	}
 }
