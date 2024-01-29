@@ -5,8 +5,8 @@
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0"/>
 		<meta name="repository" value="https://github.com/Defiant-System/tetris"/>
-		<meta name="width" value="420"/>
-		<meta name="height" value="560"/>
+		<meta name="width" value="432"/>
+		<meta name="height" value="556"/>
 		<meta name="top" value="170"/>
 		<meta name="left" value="210"/>
 		<meta name="minimize"/>

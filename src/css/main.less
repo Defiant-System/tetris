@@ -5,7 +5,14 @@ content {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	padding: 11px;
+	padding: 13px;
+	--gc: #151515;
+
+	h2 {
+		font-size: 14px;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
 
 	.view-game {
 		position: relative;
@@ -21,7 +28,6 @@ content {
 			// background-position: center center;
 			// background-repeat: no-repeat;
 			// background-size: 220%;
-			--gc: #151515;
 			
 			&:before {
 				content: "";
@@ -58,33 +64,29 @@ content {
 			flex: 1;
 			margin-left: 13px;
 		
-			.next {
-				background: #000;
-				position: relative;
-				width: 114px;
-				height: 114px;
-				margin-bottom: 29px;
-				border-radius: 4px;
-
-				&:after {
-					content: "";
-					position: absolute;
-					bottom: -1px;
-					left: 3px;
-					right: 3px;
-					height: 1px;
-					opacity: .3;
-					background-image: linear-gradient(90deg, transparent, #fff, transparent);
-				}
-			}
-
+			.next,
 			.hold {
 				background: #000;
 				position: relative;
-				width: 114px;
-				height: 114px;
-				margin-bottom: 29px;
+				width: 124px;
+				height: 140px;
+				padding: 3px;
+				margin-top: 3px;
+				margin-bottom: 19px;
 				border-radius: 4px;
+
+				&:before {
+					content: "";
+					position: absolute;
+					bottom: 5px;
+					left: 5px;
+					width: 114px;
+					height: 114px;
+					border-radius: 2px;
+					box-shadow: 0 0 0 2px var( --gc );
+					// background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px),
+					// 				repeating-linear-gradient(0deg, transparent 0px, transparent 25px, var( --gc ) 25px, var( --gc ) 26px);
+				}
 
 				&:after {
 					content: "";
@@ -103,8 +105,6 @@ content {
 				width: 114px;
 
 				h2 {
-					font-size: 16px;
-					font-weight: 400;
 					margin-bottom: 19px;
 
 					span {
@@ -144,8 +144,8 @@ content {
 		position: absolute;
 		
 		&[data-shape="L"] {
-			top: 20px;
-			left: 34px;
+			top: 41px;
+			left: 40px;
 
 			b { background-position: -25px 0; }
 			b:nth-child(1) { top: 0; left: 0; }
@@ -155,8 +155,8 @@ content {
 		}
 		
 		&[data-shape="O"] {
-			top: 34px;
-			left: 31px;
+			top: 54px;
+			left: 37px;
 
 			b { background-position: -50px 0; }
 			b:nth-child(1) { top: 0; left: 0; }
@@ -166,8 +166,8 @@ content {
 		}
 		
 		&[data-shape="Z"] {
-			top: 34px;
-			left: 19px;
+			top: 54px;
+			left: 25px;
 
 			b { background-position: -75px 0; }
 			b:nth-child(1) { top: 0; left: 0; }
@@ -177,8 +177,8 @@ content {
 		}
 		
 		&[data-shape="S"] {
-			top: 34px;
-			left: 19px;
+			top: 54px;
+			left: 25px;
 
 			b { background-position: -75px -25px; }
 			b:nth-child(1) { top: 0; left: 25px; }
@@ -188,8 +188,8 @@ content {
 		}
 		
 		&[data-shape="J"] {
-			top: 19px;
-			left: 31px;
+			top: 40px;
+			left: 37px;
 
 			b { background-position: 0 -25px; }
 			b:nth-child(1) { top: 0; left: 25px; }
@@ -199,8 +199,8 @@ content {
 		}
 		
 		&[data-shape="T"] {
-			top: 20px;
-			left: 36px;
+			top: 41px;
+			left: 42px;
 
 			b { background-position: -25px -25px; }
 			b:nth-child(1) { top: 0; left: 0; }
@@ -210,8 +210,8 @@ content {
 		}
 		
 		&[data-shape="I"] {
-			top: 7px;
-			left: 44px;
+			top: 28px;
+			left: 50px;
 
 			b { background-position: -50px -25px; }
 			b:nth-child(1) { top: 0; left: 0; }
