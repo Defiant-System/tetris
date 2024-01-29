@@ -6,10 +6,11 @@ content {
 	right: 0;
 	bottom: 0;
 	padding: 13px;
+	font-family: BebasNeueRegular, sans-serif;
 	--gc: #151515;
 
 	h2 {
-		font-size: 14px;
+		font-size: 18px;
 		font-weight: 400;
 		text-transform: uppercase;
 	}
@@ -63,14 +64,15 @@ content {
 		.side {
 			flex: 1;
 			margin-left: 13px;
+			text-align: center;
 		
 			.next,
 			.hold {
 				background: #000;
 				position: relative;
 				width: 124px;
-				height: 140px;
-				padding: 3px;
+				height: 144px;
+				padding: 5px 3px 3px;
 				margin-top: 3px;
 				margin-bottom: 19px;
 				border-radius: 4px;
@@ -98,33 +100,40 @@ content {
 					opacity: .3;
 					background-image: linear-gradient(90deg, transparent, #fff, transparent);
 				}
+
+				h2 {
+					color: #666;
+				}
 			}
 
 			.score {
 				flex: 1;
-				width: 114px;
+				width: 124px;
 
 				h2 {
+					position: relative;
 					margin-bottom: 19px;
+					background: #000;
+					padding: 5px 3px 3px;
+					border-radius: 4px;
+					color: #666;
 
 					span {
-						position: relative;
 						display: block;
-						background: #000;
-						border-radius: 4px;
-						padding: 9px 11px 7px;
 						margin-top: 3px;
+						padding: 0 5px;
+						color: #fff;
+					}
 
-						&:after {
-							content: "";
-							position: absolute;
-							bottom: -1px;
-							left: 3px;
-							right: 3px;
-							height: 1px;
-							opacity: .3;
-							background-image: linear-gradient(90deg, transparent, #fff, transparent);
-						}
+					&:after {
+						content: "";
+						position: absolute;
+						bottom: -1px;
+						left: 3px;
+						right: 3px;
+						height: 1px;
+						opacity: .3;
+						background-image: linear-gradient(90deg, transparent, #fff, transparent);
 					}
 				}
 			}
@@ -144,7 +153,7 @@ content {
 		position: absolute;
 		
 		&[data-shape="L"] {
-			top: 41px;
+			top: 45px;
 			left: 40px;
 
 			b { background-position: -25px 0; }
@@ -155,7 +164,7 @@ content {
 		}
 		
 		&[data-shape="O"] {
-			top: 54px;
+			top: 58px;
 			left: 37px;
 
 			b { background-position: -50px 0; }
@@ -166,7 +175,7 @@ content {
 		}
 		
 		&[data-shape="Z"] {
-			top: 54px;
+			top: 58px;
 			left: 25px;
 
 			b { background-position: -75px 0; }
@@ -177,7 +186,7 @@ content {
 		}
 		
 		&[data-shape="S"] {
-			top: 54px;
+			top: 58px;
 			left: 25px;
 
 			b { background-position: -75px -25px; }
@@ -188,7 +197,7 @@ content {
 		}
 		
 		&[data-shape="J"] {
-			top: 40px;
+			top: 44px;
 			left: 37px;
 
 			b { background-position: 0 -25px; }
@@ -199,7 +208,7 @@ content {
 		}
 		
 		&[data-shape="T"] {
-			top: 41px;
+			top: 45px;
 			left: 42px;
 
 			b { background-position: -25px -25px; }
@@ -210,7 +219,7 @@ content {
 		}
 		
 		&[data-shape="I"] {
-			top: 28px;
+			top: 32px;
 			left: 50px;
 
 			b { background-position: -50px -25px; }
@@ -220,4 +229,14 @@ content {
 			b:nth-child(4) { top: 75px; left: 0; }
 		}
 	}
+}
+
+
+// custom fonts
+@font-face {
+	font-family: "BebasNeueRegular";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(~/fonts/BebasNeue-webfont.woff) format("woff2");
 }
