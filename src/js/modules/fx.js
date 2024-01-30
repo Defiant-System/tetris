@@ -15,9 +15,10 @@ let FX = {
 		list.map(cell => {
 			var particleCount = 5,
 				x = (cell[0] * 26) + 13,
-				y = (cell[1] * 26) + 13;
+				y = (cell[1] * 26) + 13,
+				color = Utils.random(1, 7) | 0;
 			while(particleCount--) {
-				this.particles.push(new Particle(this, x, y));
+				this.particles.push(new Particle(this, x, y, color));
 			}
 		});
 	},

@@ -3,6 +3,7 @@
 
 @import "./modules/levels.js"
 @import "./modules/utils.js"
+@import "./modules/frags.js"
 @import "./modules/arena.js"
 @import "./modules/player.js"
 @import "./modules/fx.js"

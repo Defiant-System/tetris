@@ -10,17 +10,6 @@ let lastTime = 0;
 let dropCount = 0;
 let dropInterval = 500;
 
-let pieces = [...Array(7)].map(r => []);
-let sprite = new Image;
-sprite.onload = () => {
-	let size = 8;
-	pieces[0].push({ size, args: [sprite, 25, 0, size, size, 0, 0, size, size] });
-	pieces[0].push({ size, args: [sprite, 32, 17, size, size, 0, 0, size, size] });
-	pieces[0].push({ size, args: [sprite, 30, 5, size, size, 0, 0, size, size] });
-};
-sprite.src = "~/img/sprite.png";
-
-
 let Arena = {
 	init() {
 		// canvas reference
