@@ -5,18 +5,22 @@ class Particle {
 		this.x = x;
 		this.y = y;
 
+		let block = pieces[0];
+		this.piece = block[Utils.random(0, block.length-1) | 0];
+		this.half = this.piece.size >> 1;
+
 		// set a random angle in all possible directions, in radians
 		this.angle = Utils.random(-Math.PI * .75, -Math.PI * 2.25);
-		this.speed = Utils.random(1, 10);
+		this.speed = Utils.random(2, 7);
 
-		this.moveRotation = Utils.random(-.5, .5);
+		this.moveRotation = Utils.random(-2, 2);
 		this.rotation = 0;
 		this.rad = Math.PI / 180;
 
 		// friction will slow the particle down
 		this.friction = 0.9;
 		// gravity will be applied and pull the particle down
-		this.gravity = 1;
+		this.gravity = .9;
 		// set how fast the particle fades out
 		this.decay = Utils.random(0.015, 0.03);
 		this.alpha = 1;
@@ -42,10 +46,15 @@ class Particle {
 
 	draw(ctx) {
 		ctx.save();
-		ctx.translate(this.x, this.y);
+		ctx.translate(this.x - this.half, this.y - this.half);
 		ctx.rotate(this.rotation * this.rad);
-		ctx.fillStyle = `rgba(255,0,0,${this.alpha})`;
-		ctx.fillRect(0, 0, 14, 14);
+		// ctx.fillStyle = `rgba(255,0,0,${this.alpha})`;
+		// ctx.fillRect(0, 0, this.size, this.size);
+
+		ctx.globalAlpha = this.alpha;
+		ctx.globalCompositeOperation = "lighter";
+		ctx.drawImage(...this.piece.args);
+
 		ctx.restore();
 	}
 }

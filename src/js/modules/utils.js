@@ -1,5 +1,11 @@
 
 let Utils = {
+	createCanvas(width, height) {
+		let cvs = $(document.createElement("canvas")),
+			ctx = cvs[0].getContext("2d", { willReadFrequently: true });
+		cvs.prop({ width, height });
+		return { cvs, ctx }
+	},
 	// get a random number within a range
 	random(min, max) {
 		return Math.random() * ( max - min ) + min;
