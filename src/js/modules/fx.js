@@ -18,7 +18,7 @@ let FX = {
 				y = (cell[1] * 26) + 13,
 				color = Utils.random(1, 7) | 0;
 			while(particleCount--) {
-				this.particles.push(new Particle(this, x, y, color));
+				this.particles.push(new Shard(this, x, y, color));
 			}
 		});
 	},

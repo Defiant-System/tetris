@@ -23,12 +23,6 @@ let Game = {
 				Arena.draw(ctx);
 				Player.draw(ctx);
 				FX.draw(ctx);
-
-				// test
-				ctx.save();
-				ctx.globalCompositeOperation = "screen";
-				ctx.drawImage(sprite, 75, 50, 25, 25, 200, 240, 25, 25);
-				ctx.restore();
 			}
 		});
 	},

@@ -1,11 +1,11 @@
 
-class Particle {
+class Shard {
 	constructor(parent, x, y, color) {
 		this.parent = parent;
 		this.x = x;
 		this.y = y;
 
-		let frag = frags[0];
+		let frag = frags[color];
 		this.frag = frag[Utils.random(0, frag.length-1) | 0];
 
 		// set a random angle in all possible directions, in radians
@@ -16,28 +16,28 @@ class Particle {
 		this.rotation = 0;
 		this.rad = Math.PI / 180;
 
-		// friction will slow the particle down
+		// friction will slow the shard down
 		this.friction = 0.8;
-		// gravity will be applied and pull the particle down
+		// gravity will be applied and pull the shard down
 		this.gravity = 4;
-		// set how fast the particle fades out
+		// set how fast the shard fades out
 		this.decay = Utils.random(0.015, 0.03);
 		this.alpha = 1;
 	}
 
 	update(index) {
-		// slow down the particle
+		// slow down the shard
 		this.speed *= this.friction;
 		// apply velocity
 		this.x += Math.cos(this.angle) * this.speed;
 		this.y += Math.sin(this.angle) * this.speed + this.gravity;
-		// fade out the particle
+		// fade out the shard
 		this.alpha -= this.decay;
 
 		this.rotation += this.moveRotation;
 		// this.rotation %= 360;
 
-		// remove the particle once the alpha is low enough, based on the passed in index
+		// remove the shard once the alpha is low enough, based on the passed in index
 		if (this.alpha <= this.decay) {
 			this.parent.particles.splice(index, 1);
 		}
@@ -49,7 +49,7 @@ class Particle {
 		ctx.rotate(this.rotation * this.rad);
 
 		ctx.globalAlpha = this.alpha;
-		// ctx.globalCompositeOperation = "lighter";
+		ctx.globalCompositeOperation = "lighter";
 		ctx.drawImage(this.frag.img, 0, 0);
 
 		ctx.restore();

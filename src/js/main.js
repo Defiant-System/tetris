@@ -1,5 +1,6 @@
 
-@import "./classes/particle.js"
+@import "./classes/shard.js"
+@import "./classes/sparkle.js"
 
 @import "./modules/levels.js"
 @import "./modules/utils.js"
