@@ -1,6 +1,16 @@
 
 let FX = {
 	particles: [],
+	init() {
+		// canvas reference
+		this.cvs = window.find(".view-game .main canvas.fx-layer");
+		this.ctx = this.cvs[0].getContext("2d", { willReadFrequently: true });
+		
+		let width = +this.cvs.prop("offsetWidth"),
+			height = +this.cvs.prop("offsetHeight");
+		this.cvs.attr({ width, height });
+		this.dim = { width, height };
+	},
 	explode(list) {
 		list.map(cell => {
 			var particleCount = 5,
@@ -11,22 +21,23 @@ let FX = {
 			}
 		});
 	},
-	add(item) {
-		
-	},
-	remove(item) {
-		
-	},
 	update() {
 		let i = this.particles.length;
 		while (i--) {
 			this.particles[i].update(i);
 		}
 	},
-	draw(ctx) {
+	draw() {
+		let ctx = this.ctx;
+		// reset canvas
+		this.cvs.attr({ width: this.dim.width });
+		this.ctx.save();
+		// push origo to sync layers
+		this.ctx.translate(100, 50);
 		// update particles
 		this.update();
 		// draw particle
 		this.particles.map(p => p.draw(ctx));
+		this.ctx.restore();
 	}
 };

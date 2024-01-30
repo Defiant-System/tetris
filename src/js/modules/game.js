@@ -2,6 +2,7 @@
 
 let Game = {
 	init() {
+		FX.init();
 		Arena.init();
 		this.reset();
 

@@ -4,13 +4,15 @@ class Particle {
 		this.parent = parent;
 		this.x = x;
 		this.y = y;
+
+		// set a random angle in all possible directions, in radians
+		this.angle = Utils.random(-Math.PI * .75, -Math.PI * 2.25);
+		this.speed = Utils.random(1, 10);
+
+		this.moveRotation = Utils.random(-.5, .5);
 		this.rotation = 0;
 		this.rad = Math.PI / 180;
 
-		// set a random angle in all possible directions, in radians
-		this.angle = Utils.random(0, Math.PI * 2);
-		this.speed = Utils.random(1, 10);
-		this.moveRotation = Utils.random(-.5, .5);
 		// friction will slow the particle down
 		this.friction = 0.9;
 		// gravity will be applied and pull the particle down
@@ -39,10 +41,11 @@ class Particle {
 	}
 
 	draw(ctx) {
-		// ctx.save();
-		// ctx.rotate(this.rotation * this.rad);
+		ctx.save();
+		ctx.translate(this.x, this.y);
+		ctx.rotate(this.rotation * this.rad);
 		ctx.fillStyle = `rgba(255,0,0,${this.alpha})`;
-		ctx.fillRect(this.x, this.y, 5, 5);
-		// ctx.restore();
+		ctx.fillRect(0, 0, 14, 14);
+		ctx.restore();
 	}
 }

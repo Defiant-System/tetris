@@ -18,7 +18,7 @@ sprite.src = "~/img/sprite.png";
 let Arena = {
 	init() {
 		// canvas reference
-		this.cvs = window.find(".view-game .main canvas");
+		this.cvs = window.find(".view-game .main canvas.arena");
 		this.ctx = this.cvs[0].getContext("2d", { willReadFrequently: true });
 		this.width = +this.cvs.attr("width");
 		this.height = +this.cvs.attr("height");
