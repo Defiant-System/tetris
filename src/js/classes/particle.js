@@ -5,7 +5,7 @@ class Particle {
 		this.x = x;
 		this.y = y;
 
-		let frag = frags[color];
+		let frag = frags[0];
 		this.frag = frag[Utils.random(0, frag.length-1) | 0];
 
 		// set a random angle in all possible directions, in radians
@@ -45,14 +45,14 @@ class Particle {
 
 	draw(ctx) {
 		ctx.save();
-		ctx.translate(this.x - (this.frag.width / 2), this.y - (this.frag.height / 2));
+		ctx.translate(this.x, this.y);
 		ctx.rotate(this.rotation * this.rad);
 		// ctx.fillStyle = `rgba(255,0,0,${this.alpha})`;
 		// ctx.fillRect(0, 0, this.size, this.size);
 
-		ctx.globalAlpha = this.alpha;
+		// ctx.globalAlpha = this.alpha;
 		// ctx.globalCompositeOperation = "lighter";
-		ctx.drawImage(...this.frag.args);
+		ctx.drawImage(this.frag.img, 0, 0);
 
 		ctx.restore();
 	}

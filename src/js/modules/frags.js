@@ -1,24 +1,20 @@
 
 let frags = [...Array(7)].map(r => []),
-	tiles = [[-25, 0], [-50, 0], [-75, 0], [0, -25], [-25, -25], [-50, -25], [-75, -25]],
-	masks = [
-		[12, 13, -25, -50],
-		[9, 10, -25, -65],
-		[12, 12, -38, -50],
-		[14, 13, -36, 62]
+	shards = [
+		{ w: 13, h: 15, x: 3, y: 101 },
+		{ w: 14, h: 16, x: 20, y: 101 },
+		{ w: 15, h: 19, x: 38, y: 101 },
+		{ w: 17, h: 22, x: 56, y: 101 },
+		{ w: 21, h: 23, x: 77, y: 101 },
 	];
 
 let sprite = new Image;
 sprite.onload = () => {
 	frags.map((f, i) => {
-		masks.map(mask => {
-			let [tX, tY] = tiles[i],
-				[width, height, x, y] = mask,
-				shard = Utils.createCanvas(width, height);
-			shard.ctx.drawImage(sprite, tX, tY);
-			shard.ctx.globalCompositeOperation = "destination-in";
-			shard.ctx.drawImage(sprite, x, y);
-			frags[i].push({ width, height, args: [shard.cvs[0], 0, 0] });
+		shards.map(dim => {
+			let shard = Utils.createCanvas(dim.w, dim.h);
+			shard.ctx.drawImage(sprite, -dim.x, -dim.y);
+			frags[i].push({ ...dim, img: shard.cvs[0] });
 		});
 	});
 };
