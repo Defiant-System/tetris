@@ -45,7 +45,7 @@ class Shard {
 
 	draw(ctx) {
 		ctx.save();
-		ctx.translate(this.x, this.y);
+		ctx.translate(this.cX, this.cY);
 		ctx.rotate(this.rotation * this.rad);
 
 		ctx.globalAlpha = this.alpha;

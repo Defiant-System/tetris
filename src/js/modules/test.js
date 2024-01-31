@@ -8,6 +8,6 @@ let Test = {
 			setTimeout(() => FX.explode([[4,10],[5,10],[6,10]]), 300);
 		}, 500);
 		// setTimeout(() => Game.setState("play"), 500);
-		setTimeout(() => Game.setState("pause"), 10000);
+		// setTimeout(() => Game.setState("pause"), 10000);
 	}
 };

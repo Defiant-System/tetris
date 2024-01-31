@@ -8,12 +8,12 @@ let frags = [...Array(7)].map(r => []),
 		{ w: 21, h: 23, x: 77, y: 101 },
 	],
 	sparkles = [
-		{ w: 34, h: 34, x: 0, y: 275 },  // orange
-		{ w: 34, h: 34, x: 33, y: 275 }, // cyan
-		{ w: 34, h: 34, x: 66, y: 275 }, // purple
-		{ w: 25, h: 25, x: 75, y: 50 }, // red
-		{ w: 25, h: 25, x: 50, y: 50 }, // green
-		{ w: 25, h: 25, x: 25, y: 50 }, // purple
+		{ w: 25, h: 29, x: 0, y: 275 },  // orange
+		{ w: 25, h: 29, x: 25, y: 275 }, // cyan
+		{ w: 25, h: 29, x: 50, y: 275 }, // purple
+		{ w: 25, h: 29, x: 0, y: 304 },  // red
+		{ w: 25, h: 29, x: 25, y: 304 }, // green
+		{ w: 25, h: 29, x: 50, y: 304 }, // purple
 	];
 
 let sprite = new Image;

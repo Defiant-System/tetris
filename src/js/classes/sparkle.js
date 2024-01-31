@@ -1,18 +1,47 @@
 
 class Sparkle {
 	constructor(parent, x, y, color) {
+		let sprite = sparkles[Utils.random(0, sparkles.length-1) | 0],
+			spread = sprite.w * .2;
 
+		this.x = x + Utils.random(-spread, spread);
+		this.y = y + Utils.random(-spread, spread);
+		this.cX = sprite.w >> 1;
+		this.cY = sprite.h >> 1;
+		this.parent = parent;
+		this.sprite = sprite;
+		// a little bit of rotation
+		this.moveRotation = Utils.random(-5, 5);
+		this.rotation = 0;
+		this.rad = Math.PI / 180;
+		// set how fast the shard fades out
+		this.decay = Utils.random(0.025, 0.125);
+		this.alpha = 1.25;
 	}
 
-	update() {
-		
+	update(index) {
+		// fade out the shard
+		this.alpha -= this.decay;
+		// rotate sparkle
+		this.rotation += this.moveRotation;
+
+		// remove the shard once the alpha is low enough, based on the passed in index
+		if (this.alpha <= 0) {
+			this.parent.particles.splice(index, 1);
+		}
 	}
 
 	draw(ctx) {
-		// test
+		let s = this.sprite;
+		// draw sparkle
 		ctx.save();
-		ctx.globalCompositeOperation = "screen";
-		ctx.drawImage(sprite, 0, 275, 34, 34, 200, 240, 34, 34);
+		ctx.translate(this.x, this.y);
+		ctx.rotate(this.rotation * this.rad);
+
+		ctx.globalAlpha = this.alpha;
+		ctx.globalCompositeOperation = "lighter";
+		ctx.drawImage(s.img, -this.cX, -this.cY);
+
 		ctx.restore();
 	}
 }
