@@ -11,12 +11,16 @@ let FX = {
 		this.cvs.attr({ width, height });
 		this.dim = { width, height };
 	},
+	blast(y, cells) {
+		let list = cells.map((c, x) => [x, y, c]);
+		this.explode(list);
+	},
 	explode(list) {
 		list.map(cell => {
 			var particleCount = 5,
 				x = (cell[0] * 26) + 13,
 				y = (cell[1] * 26) + 13,
-				color = Utils.random(1, 7) | 0;
+				color = cell[2] - 1; // Utils.random(1, 7) | 0;
 			// fog
 			this.particles.push(new Fog(this, x, y, color));
 			// shards

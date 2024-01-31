@@ -23,7 +23,7 @@ class Shard {
 		// gravity will be applied and pull the shard down
 		this.gravity = 4;
 		// set how fast the shard fades out
-		this.decay = Utils.random(0.015, 0.03);
+		this.decay = Utils.random(0.035, 0.06);
 		this.alpha = 1;
 	}
 

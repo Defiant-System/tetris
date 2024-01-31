@@ -79,6 +79,9 @@ let Arena = {
 			if (Arena.matrix[y].every(x => x > 0)) {
 				linesCleared++;
 				let row = Arena.matrix.splice(y, 1)[0];
+				// blast row with FX
+				FX.blast(y, row);
+				
 				Arena.matrix.unshift(row.fill(0));
 				Player.score += rowMultiplier * 50;
 				Player.highscore = Math.max(Player.highscore, Player.score);

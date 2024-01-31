@@ -3,11 +3,11 @@ let Test = {
 	init(APP) {
 		// return;
 		setTimeout(() => {
-			Game.setState("test", 1);
+			Game.setState("play", 1);
 
-			setTimeout(() => FX.explode([[4,10],[5,10],[6,10]]), 300);
+			// setTimeout(() => FX.explode([[0,10,2],[1,10,3],[2,10,4]]), 300);
 		}, 500);
 		// setTimeout(() => Game.setState("play"), 500);
-		setTimeout(() => Game.setState("pause"), 10000);
+		// setTimeout(() => Game.setState("pause"), 6000);
 	}
 };
