@@ -8,20 +8,23 @@ let frags = [...Array(7)].map(r => []),
 		{ w: 21, h: 23, x: 77, y: 101 },
 	],
 	sparkles = [
-		{ w: 25, h: 29, x: 0, y: 275 },  // orange
-		{ w: 25, h: 29, x: 25, y: 275 }, // cyan
-		{ w: 25, h: 29, x: 50, y: 275 }, // purple
-		{ w: 25, h: 29, x: 0, y: 304 },  // red
-		{ w: 25, h: 29, x: 25, y: 304 }, // green
-		{ w: 25, h: 29, x: 50, y: 304 }, // purple
+		{ w: 25, h: 29, x: 25, y: 304 }, // blue
+		{ w: 25, h: 29, x: 50, y: 304 }, // cyan
+		{ w: 25, h: 29, x: 0, y: 304 },  // orange
+		{ w: 25, h: 29, x: 75, y: 275 }, // yellow
+		{ w: 25, h: 29, x: 50, y: 275 }, // green
+		{ w: 25, h: 29, x: 25, y: 275 }, // purple
+		{ w: 25, h: 29, x: 0, y: 275 },  // red
 	];
 
 let sprite = new Image;
 sprite.onload = () => {
 	frags.map((f, i) => {
 		shards.map(dim => {
-			let shard = Utils.createCanvas(dim.w, dim.h);
-			shard.ctx.drawImage(sprite, -dim.x, -dim.y);
+			let shard = Utils.createCanvas(dim.w, dim.h),
+				x = -dim.x,
+				y = -dim.y - (i * 25);
+			shard.ctx.drawImage(sprite, x, y);
 			frags[i].push({ ...dim, img: shard.cvs[0] });
 		});
 	});

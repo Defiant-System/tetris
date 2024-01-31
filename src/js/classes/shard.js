@@ -6,6 +6,8 @@ class Shard {
 		this.y = y;
 
 		let frag = frags[color];
+		this.cX = frag.w >> 1;
+		this.cY = frag.h >> 1;
 		this.frag = frag[Utils.random(0, frag.length-1) | 0];
 
 		// set a random angle in all possible directions, in radians
@@ -45,12 +47,12 @@ class Shard {
 
 	draw(ctx) {
 		ctx.save();
-		ctx.translate(this.cX, this.cY);
+		ctx.translate(this.x, this.y);
 		ctx.rotate(this.rotation * this.rad);
 
 		ctx.globalAlpha = this.alpha;
-		ctx.globalCompositeOperation = "lighter";
-		ctx.drawImage(this.frag.img, 0, 0);
+		// ctx.globalCompositeOperation = "lighter";
+		ctx.drawImage(this.frag.img, -this.cX, -this.cY);
 
 		ctx.restore();
 	}

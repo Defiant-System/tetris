@@ -1,13 +1,14 @@
 
 class Sparkle {
 	constructor(parent, x, y, color) {
-		let sprite = sparkles[Utils.random(0, sparkles.length-1) | 0],
+		let sprite = sparkles[color],
 			spread = sprite.w * .2;
 
 		this.x = x + Utils.random(-spread, spread);
 		this.y = y + Utils.random(-spread, spread);
 		this.cX = sprite.w >> 1;
 		this.cY = sprite.h >> 1;
+
 		this.parent = parent;
 		this.sprite = sprite;
 		// a little bit of rotation

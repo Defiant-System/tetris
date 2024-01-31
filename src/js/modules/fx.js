@@ -12,20 +12,17 @@ let FX = {
 		this.dim = { width, height };
 	},
 	explode(list) {
-		// list.map(cell => {
-		// 	var particleCount = 5,
-		// 		x = (cell[0] * 26) + 13,
-		// 		y = (cell[1] * 26) + 13,
-		// 		color = Utils.random(1, 7) | 0;
-		// 	while(particleCount--) {
-		// 		this.particles.push(new Shard(this, x, y, color));
-		// 	}
-		// });
-
 		list.map(cell => {
-			var x = (cell[0] * 26) + 13,
-				y = (cell[1] * 26) + 13;
-			this.particles.push(new Sparkle(this, x, y));
+			var particleCount = 5,
+				x = (cell[0] * 26) + 13,
+				y = (cell[1] * 26) + 13,
+				color = Utils.random(1, 7) | 0;
+			// shards
+			while(particleCount--) {
+				this.particles.push(new Shard(this, x, y, color));
+			}
+			// sparkle
+			this.particles.push(new Sparkle(this, x, y, color));
 		});
 	},
 	update() {
