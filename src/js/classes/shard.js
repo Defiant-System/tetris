@@ -11,8 +11,8 @@ class Shard {
 		this.frag = frag[Utils.random(0, frag.length-1) | 0];
 
 		// set a random angle in all possible directions, in radians
-		this.angle = Utils.random(-2, -1.25);
-		this.speed = Utils.random(16, 22);
+		this.angle = Utils.random(-1.75, -2.5) + (Math.random() > .5 ? 0 : Math.PI * .33);
+		this.speed = Utils.random(12, 19);
 
 		this.moveRotation = Utils.random(-1, 1);
 		this.rotation = 0;
