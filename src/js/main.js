@@ -1,10 +1,11 @@
 
+@import "./classes/fog.js"
 @import "./classes/shard.js"
 @import "./classes/sparkle.js"
 
 @import "./modules/levels.js"
 @import "./modules/utils.js"
-@import "./modules/frags.js"
+@import "./modules/fragments.js"
 @import "./modules/arena.js"
 @import "./modules/player.js"
 @import "./modules/fx.js"
