@@ -79,7 +79,7 @@ let Player = {
 		this.matrix = this.nextPiece;
 		this.nextPiece = Arena.randomPiece({ loc: "next" });
 		this.pos.y = 0;
-		this.pos.x = (Arena.matrix[0].length >> 1) - (this.matrix[0].length >> 1);
+		this.pos.x = (Arena.matrix[0].length - this.matrix[0].length) >> 1;
 
 		// Game Over check
 		if (this.collisionCheck()) {
@@ -129,7 +129,7 @@ let Player = {
 
 		// update UI
 		// this.els.hold.data({ shape });
-		
+
 		// collision check in case we rotate into the wall/another piece
 		let pos = this.pos.x;
 		let offset = 1;
