@@ -8,8 +8,9 @@ let Player = {
 	score: 0,
 	highscore: 0,
 	init() {
+		this.score = 0;
 		if (!this.nextPiece) this.nextPiece = Arena.randomPiece({ loc: "next" });
-		if (!this.nextPiece) this.heldPiece = Arena.randomPiece({ loc: "hold" });
+		if (!this.heldPiece) this.heldPiece = Arena.randomPiece({ loc: "hold" });
 		this.reset();
 	},
 	// Methods
@@ -75,7 +76,6 @@ let Player = {
 		this.pos = data.pos;
 	},
 	reset() {
-		this.score = 0;
 		this.matrix = this.nextPiece;
 		this.nextPiece = Arena.randomPiece({ loc: "next" });
 		this.pos.y = 0;
@@ -126,6 +126,9 @@ let Player = {
 	},
 	switchPiece() {
 		[this.heldPiece, this.matrix] = [this.matrix, this.heldPiece];
+
+		// update UI
+		// this.els.hold.data({ shape });
 		
 		// collision check in case we rotate into the wall/another piece
 		let pos = this.pos.x;

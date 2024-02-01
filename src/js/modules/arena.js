@@ -91,7 +91,7 @@ let Arena = {
 		removeRows = [];
 		// DOM update
 		this.els.score.html(Player.score);
-		this.els.score.html(Player.highscore);
+		this.els.highScore.html(Player.highscore);
 		this.els.level.html(level);
 		this.els.lines.html(linesCleared);
 	},
@@ -107,9 +107,9 @@ let Arena = {
 				FX.blast(y, row);
 				// empty cells
 				row.fill(0);
-
+				// set flag to play sound effect
 				playSound = true;
-
+				// scores
 				Player.score += rowMultiplier * 50;
 				Player.highscore = Math.max(Player.highscore, Player.score);
 				rowMultiplier *= 2;
