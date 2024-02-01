@@ -32,8 +32,8 @@ let Player = {
 	},
 	drop() { 
 		this.pos.y++; 
-		if (Arena._remove.length) {
-			Arena.lineRemove();
+		if (removeRows.length) {
+			Arena.rowsRemove();
 		}
 		if (this.collisionCheck()) {
 			this.pos.y--;
@@ -71,12 +71,12 @@ let Player = {
 	},
 	reset() {
 		this.score = 0;
-		this.nextPiece = Arena.randomPiece();
-		this.heldPiece = Arena.randomPiece();
+		this.nextPiece = Arena.randomPiece({ loc: "next" });
+		this.heldPiece = Arena.randomPiece({ loc: "hold" });
 		this.matrix = this.nextPiece;
 		this.pos.y = 0;
 		this.pos.x = (Arena.matrix[0].length >> 1) - (this.matrix[0].length >> 1);
-		
+
 		// Game Over check
 		if (this.collisionCheck()) {
 			Game.setState("game-over");

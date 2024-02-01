@@ -4,6 +4,7 @@ let level = 0;
 let linesCleared = 0;
 let paused = false;
 let pieceArray = ["T", "O", "I", "L", "J", "S", "Z"];
+let removeRows = [];
 
 // Player Piece drop timer
 let lastTime = 0;
@@ -12,6 +13,15 @@ let dropInterval = 500;
 
 let Arena = {
 	init() {
+		// fast references
+		this.els = {
+			next: window.find(".side .next .shape"),
+			hold: window.find(".side .hold .shape"),
+			score: window.find(".side h2.score span"),
+			highScore: window.find(".side h2.high-score span"),
+			level: window.find(".side h2.level span"),
+			lines: window.find(".side h2.lines span"),
+		};
 		// canvas reference
 		this.cvs = window.find(".view-game .main canvas.arena");
 		this.ctx = this.cvs[0].getContext("2d", { willReadFrequently: true });
@@ -47,15 +57,17 @@ let Arena = {
 		switch(type) {
 			case "O": return [[1,1],[1,1]];
 			case "T": return [[0,0,0],[2,2,2],[0,2,0]];
-			case "L": return [[0,3,0],[0,3,0],[0,3,3]];
-			case "I": return [[0,0,0,0],[4,4,4,4],[0,0,0,0],[0,0,0,0]];
+			case "L": return [[0,4,0],[0,4,0],[0,4,4]];
+			case "I": return [[0,0,0,0],[3,3,3,3],[0,0,0,0],[0,0,0,0]];
 			case "J": return [[0,5,0],[0,5,0],[5,5,0]];
 			case "S": return [[0,6,6],[6,6,0],[0,0,0]];
 			case "Z": return [[7,7,0],[0,7,7],[0,0,0]];
 		}
 	},
-	randomPiece(type) {
-		return this.createPiece(type || pieceArray[Math.floor(Math.random() * pieceArray.length)]);
+	randomPiece(opt={}) {
+		let type = opt.type || pieceArray[Math.floor(Math.random() * pieceArray.length)];
+		if (opt.loc) this.els[opt.loc].data({ shape: type });
+		return this.createPiece(type);
 	},
 	drawMatrix(ctx, matrix, offset, color) {
 		let scale = 26,
@@ -72,16 +84,15 @@ let Arena = {
 			});
 		});
 	},
-	_remove: [],
-	lineRemove() {
+	rowsRemove() {
 		// remove rows and push down
-		while (this._remove.length) {
-			let [y, cells] = this._remove.pop(),
+		while (removeRows.length) {
+			let [y, cells] = removeRows.pop(),
 				row = this.matrix.splice(y, 1)[0];
 			this.matrix.unshift(row.fill(0));
 		}
 		// reset stack
-		this._remove = [];
+		removeRows = [];
 	},
 	lineCheck() {
 		let rowMultiplier = 1;
@@ -89,7 +100,7 @@ let Arena = {
 			let row = this.matrix[y];
 			if (row.every(x => x > 0)) {
 				/// add to remove stack
-				this._remove.push([y, [...row]]);
+				removeRows.push([y, [...row]]);
 				// blast row(s) with effect
 				FX.blast(y, row);
 				// empty cells
