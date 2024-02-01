@@ -32,6 +32,9 @@ let Player = {
 	},
 	drop() { 
 		this.pos.y++; 
+		if (Arena._remove.length) {
+			Arena.lineRemove();
+		}
 		if (this.collisionCheck()) {
 			this.pos.y--;
 			this.merge();

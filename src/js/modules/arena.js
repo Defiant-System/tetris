@@ -72,22 +72,36 @@ let Arena = {
 			});
 		});
 	},
+	_remove: [],
+	lineRemove() {
+		// remove rows and push down
+		while (this._remove.length) {
+			let [y, cells] = this._remove.pop(),
+				row = this.matrix.splice(y, 1)[0];
+			this.matrix.unshift(row.fill(0));
+		}
+		// reset stack
+		this._remove = [];
+	},
 	lineCheck() {
 		let rowMultiplier = 1;
-		for (let y=Arena.matrix.length-1; y>0; y--) {
-			// if (Arena.matrix[y].every(function(x) {return x > 0;})) {
-			if (Arena.matrix[y].every(x => x > 0)) {
-				linesCleared++;
-				let row = Arena.matrix.splice(y, 1)[0];
-				// blast row with FX
+		for (let y=this.matrix.length-1; y>0; y--) {
+			let row = this.matrix[y];
+			if (row.every(x => x > 0)) {
+				/// add to remove stack
+				this._remove.push([y, [...row]]);
+				// blast row(s) with effect
 				FX.blast(y, row);
-				
-				Arena.matrix.unshift(row.fill(0));
+				// empty cells
+				row.fill(0);
+
 				Player.score += rowMultiplier * 50;
 				Player.highscore = Math.max(Player.highscore, Player.score);
 				rowMultiplier *= 2;
-				y++; // Because of the splicing offset
+				// Because of the splicing offset
+				// y++;
 				// Level
+				linesCleared++;
 				level = Math.floor(linesCleared / 10);
 			}
 		}
