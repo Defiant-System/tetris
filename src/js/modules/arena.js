@@ -3,7 +3,16 @@
 let level = 0;
 let linesCleared = 0;
 let paused = false;
-let pieceArray = ["T", "O", "I", "L", "J", "S", "Z"];
+let pieceMap = {
+		O: [[2,2],[2,2]],
+		T: [[0,0,0],[5,5,5],[0,5,0]],
+		L: [[0,1,0],[0,1,0],[0,1,1]],
+		I: [[0,0,0,0],[6,6,6,6],[0,0,0,0],[0,0,0,0]],
+		J: [[0,4,0],[0,4,0],[4,4,0]],
+		S: [[0,3,3],[3,3,0],[0,0,0]],
+		Z: [[7,7,0],[0,7,7],[0,0,0]],
+	};
+let pieceArray = Object.keys(pieceMap);
 let removeRows = [];
 
 // Player Piece drop timer
@@ -53,21 +62,10 @@ let Arena = {
 		}
 		return matrix;
 	},
-	createPiece(type) {
-		switch(type) {
-			case "O": return [[1,1],[1,1]];
-			case "T": return [[0,0,0],[2,2,2],[0,2,0]];
-			case "L": return [[0,4,0],[0,4,0],[0,4,4]];
-			case "I": return [[0,0,0,0],[3,3,3,3],[0,0,0,0],[0,0,0,0]];
-			case "J": return [[0,5,0],[0,5,0],[5,5,0]];
-			case "S": return [[0,6,6],[6,6,0],[0,0,0]];
-			case "Z": return [[7,7,0],[0,7,7],[0,0,0]];
-		}
-	},
 	randomPiece(opt={}) {
-		let type = opt.type || pieceArray[Math.floor(Math.random() * pieceArray.length)];
-		if (opt.loc) this.els[opt.loc].data({ shape: type });
-		return this.createPiece(type);
+		let shape = opt.shape || pieceArray[Math.floor(Math.random() * pieceArray.length)];
+		if (opt.loc) this.els[opt.loc].data({ shape });
+		return pieceMap[shape];
 	},
 	drawMatrix(ctx, matrix, offset, color) {
 		let scale = 26,
@@ -109,8 +107,6 @@ let Arena = {
 				Player.score += rowMultiplier * 50;
 				Player.highscore = Math.max(Player.highscore, Player.score);
 				rowMultiplier *= 2;
-				// Because of the splicing offset
-				// y++;
 				// Level
 				linesCleared++;
 				level = Math.floor(linesCleared / 10);

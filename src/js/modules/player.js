@@ -2,8 +2,8 @@
 let Player = {
 	// Props
 	matrix: [],
-	nextPiece: [],
-	heldPiece: Arena.randomPiece(),
+	nextPiece: null,
+	heldPiece: null,
 	pos: { x: 0, y: 0 },
 	score: 0,
 	highscore: 0,

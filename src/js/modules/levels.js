@@ -4,7 +4,7 @@ let levels = [],
 
 // level 0
 i = levels.push([])-1;
-levels[i].push({ pos: { x: 3, y: 14 }, piece: [[1,1],[1,1]] });
+levels[i].push({ pos: { x: 3, y: 14 }, piece: pieceMap.Z });
 levels[i].push("0000000000");
 levels[i].push("0000000000");
 levels[i].push("0000000000");
