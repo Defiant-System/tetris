@@ -17,7 +17,7 @@ let FX = {
 	},
 	explode(list) {
 		list.map(cell => {
-			var particleCount = 2,
+			var particleCount = Utils.random(1, 3) | 0,
 				x = (cell[0] * 26) + 13,
 				y = (cell[1] * 26) + 13,
 				color = cell[2] - 1; // Utils.random(1, 7) | 0;
