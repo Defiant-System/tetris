@@ -26,11 +26,12 @@ const tetris = {
 		// DEV-ONLY-END
 	},
 	dispatch(event) {
+		// console.log(event);
 		switch (event.type) {
 			// system events
 			case "window.init":
 				break;
-			case "window.keydown":
+			case "window.keystroke":
 				switch (event.char) {
 					case "w":
 					case "up": Player.rotate(); break;

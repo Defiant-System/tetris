@@ -44,8 +44,6 @@ let Arena = {
 				row.split("").map((v, x) =>
 					this.matrix[y][x] = +v));
 		Player.level(i);
-		// this.draw();
-		// Player.draw();
 	},
 	reset() {
 		// blank level
@@ -91,6 +89,11 @@ let Arena = {
 		}
 		// reset stack
 		removeRows = [];
+		// DOM update
+		this.els.score.html(Player.score);
+		this.els.score.html(Player.highscore);
+		this.els.level.html(level);
+		this.els.lines.html(linesCleared);
 	},
 	lineCheck() {
 		let rowMultiplier = 1;
