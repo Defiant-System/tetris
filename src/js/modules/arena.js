@@ -61,9 +61,10 @@ let Arena = {
 		return matrix;
 	},
 	randomPiece(opt={}) {
-		let shape = opt.shape || pieceArray[Math.floor(Math.random() * pieceArray.length)];
+		let shape = opt.shape || pieceArray[Math.floor(Math.random() * pieceArray.length)],
+			matrix = pieceMap[shape];
 		if (opt.loc) this.els[opt.loc].data({ shape });
-		return pieceMap[shape];
+		return { shape, matrix };
 	},
 	drawMatrix(ctx, matrix, offset, color) {
 		let scale = 26,

@@ -53,7 +53,7 @@ levels[i].push("6711020712");
 
 // level 2
 i = levels.push([])-1;
-levels[i].push({ pos: { x: 3, y: 6 }, piece: pieceMap.O });
+levels[i].push({ pos: { x: 3, y: 6 }, piece: pieceMap.Z });
 levels[i].push("0000000000");
 levels[i].push("0000000000");
 levels[i].push("0000000000");

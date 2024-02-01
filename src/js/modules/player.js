@@ -1,21 +1,25 @@
 
 let Player = {
 	// Props
-	matrix: [],
-	nextPiece: null,
-	heldPiece: null,
+	active: {
+		shape: null,
+		matrix: [],
+	},
+	next: null,
+	held: null,
+	actShape: null,
 	pos: { x: 0, y: 0 },
 	score: 0,
 	highscore: 0,
 	init() {
 		this.score = 0;
-		if (!this.nextPiece) this.nextPiece = Arena.randomPiece({ loc: "next" });
-		if (!this.heldPiece) this.heldPiece = Arena.randomPiece({ loc: "hold" });
+		if (!this.next) this.next = Arena.randomPiece({ loc: "next" });
+		if (!this.held) this.held = Arena.randomPiece({ loc: "hold", shape: "S" });
 		this.reset();
 	},
 	// Methods
 	collisionCheck(pos) {
-		let m = this.matrix,
+		let m = this.active.matrix,
 			o = pos || this.pos;
 		for(let y=0, yl=m.length; y<yl; ++y) {
 			for(let x=0, xl=m[y].length; x<xl; ++x) {
@@ -27,11 +31,11 @@ let Player = {
 		return false;
 	},
 	draw(ctx) {
-		Arena.drawMatrix(ctx, this.matrix, { x: this.pos.x, y: this.pos.y });
+		Arena.drawMatrix(ctx, this.active.matrix, { x: this.pos.x, y: this.pos.y });
 		// Ghost piece
 		for(let y=0; y<20; y++) {
 			if (this.collisionCheck({ x: this.pos.x, y: y }) && y >= this.pos.y) {
-				Arena.drawMatrix(ctx, this.matrix, { x: this.pos.x, y: y - 1 }, 7);
+				Arena.drawMatrix(ctx, this.active.matrix, { x: this.pos.x, y: y - 1 }, 7);
 				return false;
 			}
 		}
@@ -61,7 +65,7 @@ let Player = {
 		this.drop();
 	},
 	merge() { 
-		this.matrix.forEach((row, y) => {
+		this.active.matrix.forEach((row, y) => {
 			row.forEach((value, x) => {
 				if (value !== 0) {
 					Arena.matrix[y + this.pos.y][x + this.pos.x] = value;
@@ -71,15 +75,15 @@ let Player = {
 	},
 	level(i) {
 		let data = levels[i][0];
-		this.nextPiece = data.piece;
-		this.matrix = this.nextPiece;
+		this.next = data.piece;
+		this.active = this.next;
 		this.pos = data.pos;
 	},
 	reset() {
-		this.matrix = this.nextPiece;
-		this.nextPiece = Arena.randomPiece({ loc: "next" });
+		this.active = this.next;
+		this.next = Arena.randomPiece({ loc: "next" });
 		this.pos.y = 0;
-		this.pos.x = (Arena.matrix[0].length - this.matrix[0].length) >> 1;
+		this.pos.x = (Arena.matrix[0].length - this.active.matrix[0].length) >> 1;
 
 		// Game Over check
 		if (this.collisionCheck()) {
@@ -87,22 +91,22 @@ let Player = {
 		}
 	},
 	rotate(dir) {
-		for(let y=0; y<this.matrix.length; ++y) {
+		for(let y=0; y<this.active.matrix.length; ++y) {
 			for(let x=0; x<y; ++x) {
 				[
-					this.matrix[x][y],
-					this.matrix[y][x],
+					this.active.matrix[x][y],
+					this.active.matrix[y][x],
 				] = [
-					this.matrix[y][x],
-					this.matrix[x][y],
+					this.active.matrix[y][x],
+					this.active.matrix[x][y],
 				];
 			}
 		}
 		
 		if (dir > 0) {
-			this.matrix.forEach(row => row.reverse());
+			this.active.matrix.forEach(row => row.reverse());
 		} else {
-			this.matrix.reverse();
+			this.active.matrix.reverse();
 		}
 		
 		// collision check in case we rotate into the wall/another piece
@@ -111,7 +115,7 @@ let Player = {
 		while (this.collisionCheck()) {
 			this.pos.x += offset;
 			offset = -(offset + (offset > 0 ? 1 : -1));
-			if (offset > this.matrix[0].length) {
+			if (offset > this.active.matrix[0].length) {
 				this.rotate(-dir);
 				this.pos.x = pos;
 				return;
@@ -125,10 +129,12 @@ let Player = {
 		}
 	},
 	switchPiece() {
-		[this.heldPiece, this.matrix] = [this.matrix, this.heldPiece];
+		[this.held, this.matrix] = [this.matrix, this.held];
 
 		// update UI
-		// this.els.hold.data({ shape });
+		// let shape = Arena.els.hold.data("shape");
+		// Arena.els.hold.data({ shape: this.actShape });
+		// this.actShape = shape;
 
 		// collision check in case we rotate into the wall/another piece
 		let pos = this.pos.x;
