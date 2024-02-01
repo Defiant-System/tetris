@@ -8,8 +8,8 @@ let Player = {
 	score: 0,
 	highscore: 0,
 	init() {
-		this.nextPiece = Arena.randomPiece({ loc: "next" });
-		this.heldPiece = Arena.randomPiece({ loc: "hold" });
+		if (!this.nextPiece) this.nextPiece = Arena.randomPiece({ loc: "next" });
+		if (!this.nextPiece) this.heldPiece = Arena.randomPiece({ loc: "hold" });
 		this.reset();
 	},
 	// Methods
