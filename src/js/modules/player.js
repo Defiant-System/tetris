@@ -7,6 +7,11 @@ let Player = {
 	pos: { x: 0, y: 0 },
 	score: 0,
 	highscore: 0,
+	init() {
+		this.nextPiece = Arena.randomPiece({ loc: "next" });
+		this.heldPiece = Arena.randomPiece({ loc: "hold" });
+		this.reset();
+	},
 	// Methods
 	collisionCheck(pos) {
 		let m = this.matrix,
@@ -71,9 +76,8 @@ let Player = {
 	},
 	reset() {
 		this.score = 0;
-		this.nextPiece = Arena.randomPiece({ loc: "next" });
-		this.heldPiece = Arena.randomPiece({ loc: "hold" });
 		this.matrix = this.nextPiece;
+		this.nextPiece = Arena.randomPiece({ loc: "next" });
 		this.pos.y = 0;
 		this.pos.x = (Arena.matrix[0].length >> 1) - (this.matrix[0].length >> 1);
 

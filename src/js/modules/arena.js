@@ -9,8 +9,8 @@ let pieceMap = {
 		L: [[0,1,0],[0,1,0],[0,1,1]],
 		I: [[0,0,0,0],[6,6,6,6],[0,0,0,0],[0,0,0,0]],
 		J: [[0,4,0],[0,4,0],[4,4,0]],
-		S: [[0,3,3],[3,3,0],[0,0,0]],
-		Z: [[7,7,0],[0,7,7],[0,0,0]],
+		S: [[0,7,7],[7,7,0],[0,0,0]],
+		Z: [[3,3,0],[0,3,3],[0,0,0]],
 	};
 let pieceArray = Object.keys(pieceMap);
 let removeRows = [];
@@ -96,7 +96,8 @@ let Arena = {
 		this.els.lines.html(linesCleared);
 	},
 	lineCheck() {
-		let rowMultiplier = 1;
+		let rowMultiplier = 1,
+			playSound;
 		for (let y=this.matrix.length-1; y>0; y--) {
 			let row = this.matrix[y];
 			if (row.every(x => x > 0)) {
@@ -107,6 +108,8 @@ let Arena = {
 				// empty cells
 				row.fill(0);
 
+				playSound = true;
+
 				Player.score += rowMultiplier * 50;
 				Player.highscore = Math.max(Player.highscore, Player.score);
 				rowMultiplier *= 2;
@@ -115,5 +118,7 @@ let Arena = {
 				level = Math.floor(linesCleared / 10);
 			}
 		}
+		// play sound
+		if (playSound) window.audio.play("bricks");
 	}
 };

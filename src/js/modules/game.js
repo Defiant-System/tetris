@@ -37,6 +37,8 @@ let Game = {
 			case "play":
 				this.fpsControl.fps = 60;
 				this.fpsControl.start();
+
+				Player.init();
 				break;
 			case "pause":
 				this.fpsControl.stop();
@@ -47,7 +49,7 @@ let Game = {
 	},
 	reset() {
 		Arena.reset();
-		Player.reset();
+		// Player.reset();
 		dropCount = 0;
 		linesCleared = 0;
 		level = 0;
