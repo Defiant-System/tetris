@@ -24,6 +24,7 @@ let Arena = {
 	init() {
 		// fast references
 		this.els = {
+			countdown: window.find(".view-countdown"),
 			next: window.find(".side .next .shape"),
 			hold: window.find(".side .hold .shape"),
 			score: window.find(".side h2.score span"),
@@ -38,6 +39,14 @@ let Arena = {
 		this.height = +this.cvs.attr("height");
 
 		this.matrix = this.createMatrix(10, 20);
+	},
+	countdown(callback) {
+		this.els.countdown.cssSequence("start", "animationend", el => {
+			if (el.hasClass("tick-1")) {
+				el.parent().removeClass("start");
+				callback();
+			}
+		});
 	},
 	level(i) {
 		levels[i].slice(1).map((row, y) =>

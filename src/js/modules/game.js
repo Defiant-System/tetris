@@ -33,12 +33,16 @@ let Game = {
 		switch (this._state) {
 			case "test":
 				Arena.level(level);
-				/* falls through */
-			case "play":
 				this.fpsControl.fps = 60;
 				this.fpsControl.start();
-
 				Player.init();
+				break;
+			case "play":
+				Arena.countdown(() => {
+					this.fpsControl.fps = 60;
+					this.fpsControl.start();
+					Player.init();
+				});
 				break;
 			case "pause":
 				this.fpsControl.stop();
