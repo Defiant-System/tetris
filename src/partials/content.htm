@@ -7,12 +7,12 @@
 		<div class="side">
 			<div class="next">
 				<h2>Next</h2>
-				<div class="shape" data-shape="0"><b></b><b></b><b></b><b></b></div>
+				<div class="shape" data-shape="T"><b></b><b></b><b></b><b></b></div>
 			</div>
 
 			<div class="hold">
 				<h2>Hold</h2>
-				<div class="shape" data-shape="0"><b></b><b></b><b></b><b></b></div>
+				<div class="shape" data-shape="L"><b></b><b></b><b></b><b></b></div>
 			</div>
 
 			<div class="score-board">
@@ -39,7 +39,29 @@
 	</div>
 
 	<div class="view-start">
-		<h2>Tetris</h2>
+		<svg class="tetris-logo" viewBox="0 0 210 60">
+			<defs>
+				<linearGradient id="gradient" color-interpolation="sRGB" spreadMethod="repeat" x1="0" x2="0" y1="0" y2="1">
+					<stop stop-color="#116" offset="0%"></stop>
+					<stop stop-color="#ccf" offset="50%"></stop>
+					<stop stop-color="#116" offset="100%"></stop>
+				</linearGradient>
+				<mask id="textMask">
+					<polygon stroke="#fff" stroke-width="2" points="36.2,1.8 2.1,1.8 2.1,14.6 12.2,14.6 12.2,58.2 25.9,58.2 25.9,14.6 36.2,14.6 "/>
+					<rect x="157.4" y="1.8" stroke="#fff" stroke-width="2" width="13.7" height="56.4"/>
+					<polygon stroke="#fff" stroke-width="2" points="112.2,1.8 78,1.8 78,14.6 88.1,14.6 88.1,58.2 101.8,58.2 101.8,14.6 112.2,14.6 "/>
+					<path stroke="#fff" stroke-width="2" d="M75.6,45.4H54V34.6h8.1l8-12.8H54v-7.1h20.4V1.8H40.3v11.5v1.4c0,0,0,25.4,0,30.8S42.4,58.2,54,58.2
+						s29.5,0,29.5,0L75.6,45.4z"/>
+					<path stroke="#fff" stroke-width="2" d="M145.7,26.6c1.7-1.1,6-4.4,6-12c0-6.4-5.2-12.8-14.1-12.8l-21.9,0v11.5v1.4v43.5h13.7V14.6h3.2
+						c6-0.1,7,2.8,6.9,5.3c-0.1,2.4-3.2,5.4-8.1,6.8c5.4,1.4,8.6,7,8.6,14.8c0,16.7,0,16.7,0,16.7h13.2c0,0,0-11,0-17.3
+						C153.3,33.2,149.6,27.4,145.7,26.6z"/>
+					<path stroke="#fff" stroke-width="2" d="M194.5,14.6h5.8l7.6-12.8h-19.5c-10.6,0-13.9,7.7-13.9,11.5c0,4.8,1.4,6.1,3.7,9.3c3.6,5,9.1,11.7,11.8,15.1
+						c4,5,2.3,7.1-0.7,7.1c-3,0-14.2,0-14.2,0v13.4c0,0,8.7,0,20.5,0c10.5,0,16.4-12,9.4-21.2c-6.3-8.4-10.7-13.6-12.6-16.1
+						C189.3,17,190.2,14.6,194.5,14.6z"/>
+				</mask>
+			</defs>
+			<rect id="fill" mask="url(#textMask)" fill="url(#gradient)" x="0" y="0" width="300" height="100"></rect>
+		</svg>
 
 		<div class="controls">
 			<div class="row">
