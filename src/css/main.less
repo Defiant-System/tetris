@@ -29,7 +29,8 @@ content {
 		width: 269px;
 		height: 529px;
 		font-size: 103px;
-		--speed: 800ms;
+		pointer-events: none;
+		--speed: 750ms;
 
 		&.start {
 			span {
@@ -49,6 +50,47 @@ content {
 			text-align: center;
 			margin-top: -53px;
 			opacity: 0;
+		}
+	}
+
+	.view-logo {
+		position: absolute;
+		top: 13px;
+		left: 13px;
+		width: 269px;
+		height: 529px;
+		text-align: center;
+
+		h2 {
+			position: relative;
+			top: 117px;
+			width: 210px;
+			height: 60px;
+			display: inline-block;
+			text-indent: -9999px;
+			background: url(~/icons/tetris-logo.png) 50% 50%/contain no-repeat;
+		}
+	}
+
+	.view-paused {
+		display: none;
+		background: rgba(#111,.35);
+		color: #fff;
+		position: absolute;
+		top: 13px;
+		left: 13px;
+		width: 269px;
+		height: 529px;
+		pointer-events: none;
+
+		h2 {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			margin-top: -53px;
+			font-size: 103px;
 		}
 	}
 

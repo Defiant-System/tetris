@@ -33,6 +33,7 @@ let Game = {
 		switch (this._state) {
 			case "test":
 				Arena.level(level);
+				return;
 				this.fpsControl.fps = 60;
 				this.fpsControl.start();
 				Player.init();
