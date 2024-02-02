@@ -21,6 +21,37 @@ content {
 		display: none;
 	}
 
+	.view-countdown {
+		// background: rgba(#f00,.1);
+		position: absolute;
+		top: 13px;
+		left: 13px;
+		width: 269px;
+		height: 529px;
+		font-size: 103px;
+		--speed: 800ms;
+
+		&.start {
+			span {
+				animation: countdown var( --speed ) ease-in-out forwards;
+
+				&.tick-3 { animation-delay: calc( var( --speed ) * 0 ); }
+				&.tick-2 { animation-delay: calc( var( --speed ) * 1 ); }
+				&.tick-1 { animation-delay: calc( var( --speed ) * 2 ); }
+			}
+		}
+
+		span {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			margin-top: -53px;
+			opacity: 0;
+		}
+	}
+
 	.view-game {
 		position: relative;
 		display: flex;
@@ -251,6 +282,12 @@ content {
 	}
 }
 
+@keyframes countdown {
+	0%   { opacity: 0; }
+	5%   { opacity: 1; transform: scale(1); }
+	100% { opacity: 0; transform: scale(1.5); }
+}
+
 
 // custom fonts
 @font-face {
@@ -260,3 +297,5 @@ content {
 	font-display: swap;
 	src: url(~/fonts/BebasNeue-webfont.woff) format("woff2");
 }
+
+
