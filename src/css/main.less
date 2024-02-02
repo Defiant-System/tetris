@@ -8,6 +8,7 @@ content {
 	right: 0;
 	bottom: 0;
 	padding: 13px;
+	color: #fff;
 	font-family: BebasNeueRegular, sans-serif;
 	--gc: #22222299;
 
@@ -53,29 +54,92 @@ content {
 		}
 	}
 
-	.view-logo {
+	.view-start {
 		position: absolute;
 		top: 13px;
 		left: 13px;
 		width: 269px;
 		height: 529px;
 		text-align: center;
+		padding-top: 79px;
+		font-size: 23px;
 
 		h2 {
 			position: relative;
-			top: 117px;
+			top: 0;
 			width: 210px;
 			height: 60px;
+			margin-bottom: 16px;
 			display: inline-block;
 			text-indent: -9999px;
 			background: url(~/icons/tetris-logo.png) 50% 50%/contain no-repeat;
+		}
+
+		.controls {
+			.row {
+				text-align: right;
+				margin-bottom: 9px;
+
+				span {
+					display: inline-block;
+					width: 162px;
+					padding: 5px 0 0 3px;
+					text-align: left;
+				}
+
+				.key {
+					background: #888;
+					position: relative;
+					display: inline-block;
+					width: 29px;
+					height: 26px;
+					border-radius: 4px;
+					margin: 0 1px 0 0;
+					vertical-align: top;
+					box-shadow: 0px 3px 0px 0px #666;
+
+					&:before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						background-position: 6px 5px;
+						background-size: 21px 21px;
+						background-repeat: no-repeat;
+						filter: drop-shadow(0 1px 0 rgba(#111,.4));
+					}
+
+					&:after {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						border-radius: inherit;
+						background-image: radial-gradient(ellipse at bottom center, #ffffff99, transparent);
+					}
+
+					&.icon-arrow-left:before  { background-image: url(~/icons/icon-arrow-left.png); }
+					&.icon-arrow-right:before { background-image: url(~/icons/icon-arrow-right.png); }
+					&.icon-arrow-up:before    { background-image: url(~/icons/icon-arrow-up.png); }
+					&.icon-arrow-down:before  { background-image: url(~/icons/icon-arrow-down.png); }
+
+					&.icon-space:before       { background-image: url(~/icons/icon-space.png); }
+					&.icon-shift:before       { background-image: url(~/icons/icon-shift.png); }
+					&.icon-p:before           { background-image: url(~/icons/icon-p.png); }
+
+					&.icon-escape:before      { background-image: url(~/icons/icon-escape.png); background-position: 50% 50%; }
+				}
+			}
 		}
 	}
 
 	.view-paused {
 		display: none;
 		background: rgba(#111,.35);
-		color: #fff;
 		position: absolute;
 		top: 13px;
 		left: 13px;
@@ -210,16 +274,16 @@ content {
 			}
 
 			h2.logo {
-				background: url(~/icons/tetris-logo.png) 50% 50%/contain no-repeat;
+				background: url(~/icons/small-logo.png) 50% 50%/contain no-repeat;
 				position: relative;
 				top: 0;
 				left: 0;
 				width: 90px;
-				height: 21px;
+				height: 25px;
 				display: inline-block;
 				text-indent: -9999px;
 				mix-blend-mode: overlay;
-				filter: invert(1) sepia(1) hue-rotate(235deg) opacity(.8) drop-shadow(0 1px 0 rgba(#fff,.75));
+				filter: sepia(1) hue-rotate(235deg) drop-shadow(0 1px 0 rgba(#fff,.35));
 			}
 		}
 	}
