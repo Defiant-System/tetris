@@ -67,7 +67,14 @@ let Game = {
 				setTimeout(() => {
 					// playing view
 					APP.content.data({ show: "game-over" });
-					APP.content.addClass("show-fireworks");
+
+					if (Player.score > bestScore) {
+						// save new score to settings
+						window.settings.setItem("best-score", bestScore);
+						// fireworks
+						APP.content.addClass("show-fireworks");
+						Player.score = bestScore;
+					}
 				}, 500);
 				break;
 		}

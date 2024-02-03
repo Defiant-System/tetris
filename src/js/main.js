@@ -14,11 +14,16 @@
 @import "./modules/test.js"
 
 
+let bestScore = window.settings.getItem("best-score") || 0;
+
 const tetris = {
 	init() {
 		// fast references
 		this.content = window.find("content");
-
+		// set high score, if any
+		Player.highscore = bestScore;
+		this.content.find(".side h2.high-score span").html(bestScore);
+		// init game engine
 		Game.init();
 
 		// DEV-ONLY-START
