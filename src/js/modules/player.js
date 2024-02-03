@@ -7,7 +7,6 @@ let Player = {
 	},
 	next: null,
 	held: null,
-	actShape: null,
 	pos: { x: 0, y: 0 },
 	score: 0,
 	highscore: 0,
@@ -61,7 +60,12 @@ let Player = {
 		}
 		this.pos.y--;
 		this.score += Math.max(count-1, 0) * 2;
-		this.highscore = Math.max(this.highscore, this.score);
+		Arena.els.score.html(this.score); // DOM update
+		
+		if (this.highscore > this.score) {
+			this.highscore = this.score;
+			Arena.els.highScore.html(this.highscore); // DOM update
+		}
 		this.drop();
 	},
 	merge() { 
@@ -87,7 +91,6 @@ let Player = {
 
 		// Game Over check
 		if (this.collisionCheck()) {
-			console.log("game-over");
 			Game.setState("game-over");
 		}
 	},
@@ -133,9 +136,10 @@ let Player = {
 		[this.held, this.matrix] = [this.matrix, this.held];
 
 		// update UI
-		// let shape = Arena.els.hold.data("shape");
-		// Arena.els.hold.data({ shape: this.actShape });
-		// this.actShape = shape;
+		let shape = Arena.els.hold.data("shape");
+		Arena.els.hold.data({ shape: this.active.shape });
+		this.active.shape = shape;
+		this.active.matrix = pieceMap[shape];
 
 		// collision check in case we rotate into the wall/another piece
 		let pos = this.pos.x;

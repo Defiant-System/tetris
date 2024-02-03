@@ -1,5 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
 
+	<defs>
+		<filter id="tetris-noise">
+			<feTurbulence baseFrequency="0.01 0.025" result="noise" numOctaves="5">
+				<animate attributeName="baseFrequency" from="0.01 0.05" to="0.05 0.01" dur="50s" repeatCount="99" />
+			</feTurbulence>
+			<feDisplacementMap in="SourceGraphic" in2="noise" scale="11" xChannelSelector="R" yChannelSelector="R"/>
+		</filter>
+	</defs>
+
 	<svg id="icon-arrow-left" viewBox="0 0 21 21">
 		<style type="text/css">
 			.st0{fill:#fff;}

@@ -37,6 +37,7 @@ let Game = {
 				APP.content.data({ show: "playing" });
 				Arena.level(level);
 				this.fpsControl.start();
+				this._state = "play";
 				break;
 			case "play":
 				// playing view
@@ -59,6 +60,8 @@ let Game = {
 					APP.content.data({ show: "playing" });
 					// start loop
 					this.fpsControl.start();
+					// set correct flag
+					this._state = "play";
 				}
 				break;
 			case "game-over":
@@ -67,13 +70,13 @@ let Game = {
 				setTimeout(() => {
 					// playing view
 					APP.content.data({ show: "game-over" });
-
+					
 					if (Player.score > bestScore) {
 						// save new score to settings
-						console.log("best-score", bestScore);
+						window.settings.setItem("best-score", Player.score);
 						// fireworks
 						APP.content.addClass("show-fireworks");
-						Player.score = bestScore;
+						Player.score = Player.score;
 					}
 				}, 500);
 				break;

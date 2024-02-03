@@ -29,6 +29,13 @@ content {
 
 	}
 
+	&[data-show="pause"] {
+		.view-paused {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
 	&[data-show="game-over"] {
 		.view-game-over {
 			opacity: 1;
@@ -46,6 +53,8 @@ content {
 		}
 
 		.pyro {
+			display: block;
+
 			> .before,
 			> .after {
 				animation: 1s bang ease-out 7 backwards,
@@ -82,12 +91,36 @@ content {
 		background: rgba(#111,.35);
 		backdrop-filter: blur(13px);
 		border-radius: 3px;
+		overflow: hidden;
 		pointer-events: none;
 		padding-top: 137px;
 		text-align: center;
 		perspective: 100px;
 
+		&:before {
+			content: "";
+			position: absolute;
+			top: -13px;
+			left: -13px;
+			right: -13px;
+			bottom: -13px;
+			background: rgba(#000,.25);
+			backdrop-filter: blur(13px);
+			filter: url(#tetris-noise);
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			box-shadow: inset 0 0 13px 7px rgba(#000,.5);
+		}
+
 		h2 {
+			position: relative;
 			font-size: 53px;
 		}
 
@@ -101,6 +134,7 @@ content {
 	}
 
 	.pyro {
+		display: none;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -269,10 +303,31 @@ content {
 		left: 13px;
 		width: 269px;
 		height: 529px;
-		background: rgba(#111,.35);
-		backdrop-filter: blur(23px);
+		overflow: hidden;
 		border-radius: 3px;
 		pointer-events: none;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: -13px;
+			left: -13px;
+			right: -13px;
+			bottom: -13px;
+			background: rgba(#000,.25);
+			backdrop-filter: blur(13px);
+			filter: url(#tetris-noise);
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			box-shadow: inset 0 0 13px 7px rgba(#000,.5);
+		}
 
 		h2 {
 			position: absolute;
