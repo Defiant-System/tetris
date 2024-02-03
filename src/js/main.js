@@ -45,7 +45,7 @@ const tetris = {
 					case "space": Player.hardDrop(); break;
 					case "shift": Player.switchPiece(); break;
 
-					case "esc": Game.setState("new"); break;
+					case "esc": Game.setState("play"); break;
 					case "p": Game.setState("pause"); break;
 				}
 				break;

@@ -34,13 +34,16 @@ let Game = {
 
 		switch (this._state) {
 			case "test":
+				APP.content.data({ show: "playing" });
 				Arena.level(level);
-				
 				this.fpsControl.start();
-				// Player.init();
 				break;
 			case "play":
+				// playing view
+				APP.content.data({ show: "playing" });
+				// start cound down
 				Arena.countdown(() => {
+					// start loop
 					this.fpsControl.start();
 					Player.init();
 				});
@@ -48,15 +51,21 @@ let Game = {
 			case "pause":
 				if (currState === "play") {
 					// pause
-					APP.content.addClass("show-pause");
+					APP.content.data({ show: "pause" });
+					// stop loop
 					this.fpsControl.stop();
 				} else {
 					// resume
-					APP.content.removeClass("show-pause");
+					APP.content.data({ show: "playing" });
+					// start loop
 					this.fpsControl.start();
 				}
 				break;
 			case "game-over":
+				// playing view
+				APP.content.data({ show: "game-over" });
+				// stop loop
+				this.fpsControl.stop();
 				break;
 		}
 	},

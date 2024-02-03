@@ -87,6 +87,7 @@ let Player = {
 
 		// Game Over check
 		if (this.collisionCheck()) {
+			console.log("game-over");
 			Game.setState("game-over");
 		}
 	},
