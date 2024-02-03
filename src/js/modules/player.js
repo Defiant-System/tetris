@@ -75,7 +75,7 @@ let Player = {
 	},
 	level(i) {
 		let data = levels[i][0];
-		this.next = data.piece;
+		this.next = Arena.randomPiece({ loc: "next", shape: data.shape });
 		this.active = this.next;
 		this.pos = data.pos;
 	},

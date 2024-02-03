@@ -9,6 +9,7 @@ let Game = {
 		// FPS start here
 		let Self = this;
 		this.fpsControl = karaqu.FpsControl({
+			fps: 60,
 			callback(time, delta) {
 				dropCount += delta;
 				if (dropCount > Math.max((dropInterval - (level * 60)), 60)) {
@@ -27,26 +28,33 @@ let Game = {
 		});
 	},
 	setState(name, level) {
-		let currState = this._state;
+		let APP = tetris,
+			currState = this._state;
 		this._state = name;
 
 		switch (this._state) {
 			case "test":
 				Arena.level(level);
-				return;
-				this.fpsControl.fps = 60;
+				
 				this.fpsControl.start();
-				Player.init();
+				// Player.init();
 				break;
 			case "play":
 				Arena.countdown(() => {
-					this.fpsControl.fps = 60;
 					this.fpsControl.start();
 					Player.init();
 				});
 				break;
 			case "pause":
-				this.fpsControl.stop();
+				if (currState === "play") {
+					// pause
+					APP.content.addClass("show-pause");
+					this.fpsControl.stop();
+				} else {
+					// resume
+					APP.content.removeClass("show-pause");
+					this.fpsControl.start();
+				}
 				break;
 			case "game-over":
 				break;

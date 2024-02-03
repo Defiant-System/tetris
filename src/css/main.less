@@ -12,6 +12,13 @@ content {
 	font-family: BebasNeueRegular, sans-serif;
 	--gc: #22222299;
 
+	&.show-start {
+		.view-start {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
 	h2 {
 		font-size: 18px;
 		font-weight: 400;
@@ -55,6 +62,8 @@ content {
 	}
 
 	.view-start {
+		opacity: 0;
+		visibility: hidden;
 		position: absolute;
 		top: 13px;
 		left: 13px;
@@ -171,13 +180,16 @@ content {
 	}
 
 	.view-paused {
-		display: none;
-		background: rgba(#111,.35);
+		opacity: 0;
+		visibility: hidden;
 		position: absolute;
 		top: 13px;
 		left: 13px;
 		width: 269px;
 		height: 529px;
+		background: rgba(#111,.35);
+		backdrop-filter: blur(23px);
+		border-radius: 3px;
 		pointer-events: none;
 
 		h2 {
@@ -187,7 +199,7 @@ content {
 			right: 0;
 			text-align: center;
 			margin-top: -53px;
-			font-size: 103px;
+			font-size: 73px;
 		}
 	}
 
