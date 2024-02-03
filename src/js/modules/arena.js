@@ -107,7 +107,7 @@ let Arena = {
 	},
 	lineCheck() {
 		let rowMultiplier = 1,
-			playSound;
+			rows = 0;
 		for (let y=this.matrix.length-1; y>0; y--) {
 			let row = this.matrix[y];
 			if (row.every(x => x > 0)) {
@@ -118,7 +118,7 @@ let Arena = {
 				// empty cells
 				row.fill(0);
 				// set flag to play sound effect
-				playSound = true;
+				rows++;
 				// scores
 				Player.score += rowMultiplier * 50;
 				Player.highscore = Math.max(Player.highscore, Player.score);
@@ -129,6 +129,11 @@ let Arena = {
 			}
 		}
 		// play sound
-		if (playSound) window.audio.play("bricks");
+		if (rows) {
+			if (rows === 4) {
+				window.el.cssSequence("bounce", "animationend", el => el.removeClass("bounce"));
+			}
+			window.audio.play("bricks");
+		}
 	}
 };

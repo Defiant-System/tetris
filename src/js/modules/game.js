@@ -70,7 +70,7 @@ let Game = {
 
 					if (Player.score > bestScore) {
 						// save new score to settings
-						window.settings.setItem("best-score", bestScore);
+						console.log("best-score", bestScore);
 						// fireworks
 						APP.content.addClass("show-fireworks");
 						Player.score = bestScore;

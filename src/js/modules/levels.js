@@ -28,7 +28,7 @@ levels[i].push("1230067112");
 
 // level 1
 i = levels.push([])-1;
-levels[i].push({ pos: { x: 3, y: 13 }, shape: "L" });
+levels[i].push({ pos: { x: 3, y: -1 }, shape: "I" });
 levels[i].push("0000000000");
 levels[i].push("0000000000");
 levels[i].push("0000000000");
