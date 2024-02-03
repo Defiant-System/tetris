@@ -53,10 +53,18 @@ let Arena = {
 				row.split("").map((v, x) =>
 					this.matrix[y][x] = +v));
 		Player.level(i);
+		if (!Player.held) Player.held = Arena.randomPiece({ loc: "hold" });
 	},
 	reset() {
 		// blank level
 		this.matrix.forEach(row => row.fill(0));
+		// reset player
+		Player.next = null;
+		Player.held = null;
+		Player.active = { shape: null, matrix: [] };
+		// empty "held" & "next"
+		this.els.next.data({ shape: "0" });
+		this.els.hold.data({ shape: "0" });
 	},
 	draw(ctx) {
 		// draw matrix

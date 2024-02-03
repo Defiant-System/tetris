@@ -39,6 +39,14 @@ let Game = {
 				this.fpsControl.start();
 				this._state = "play";
 				break;
+			case "reset":
+				// stop loop, if not stopped
+				this.fpsControl.stop();
+				// set correct flag
+				this._state = "play";
+				// empty arena
+				Arena.reset();
+				/* falls through */
 			case "play":
 				// playing view
 				APP.content.data({ show: "playing" });
@@ -74,6 +82,8 @@ let Game = {
 					if (Player.score > bestScore) {
 						// save new score to settings
 						window.settings.setItem("best-score", Player.score);
+						// DOM update
+						Arena.els.highScore.html(this.highscore);
 						// fireworks
 						APP.content.addClass("show-fireworks");
 						Player.score = Player.score;

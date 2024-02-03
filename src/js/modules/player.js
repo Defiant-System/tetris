@@ -13,7 +13,7 @@ let Player = {
 	init() {
 		this.score = 0;
 		if (!this.next) this.next = Arena.randomPiece({ loc: "next" });
-		if (!this.held) this.held = Arena.randomPiece({ loc: "hold", shape: "S" });
+		if (!this.held) this.held = Arena.randomPiece({ loc: "hold" });
 		this.reset();
 	},
 	// Methods
