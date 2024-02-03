@@ -79,14 +79,15 @@ let Game = {
 					// playing view
 					APP.content.data({ show: "game-over" });
 					
-					if (Player.score > bestScore) {
+					if (Player.highscore > bestScore) {
+						Player.score = Player.highscore;
 						// save new score to settings
 						window.settings.setItem("best-score", Player.score);
-						// DOM update
-						Arena.els.highScore.html(this.highscore);
 						// fireworks
 						APP.content.addClass("show-fireworks");
-						Player.score = Player.score;
+						// DOM update
+						Arena.els.score.html(Player.score);
+						Arena.els.highScore.html(Player.highscore);
 					}
 				}, 500);
 				break;
