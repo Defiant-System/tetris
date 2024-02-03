@@ -40,11 +40,8 @@ content {
 		.view-game-over {
 			h3 {
 				display: block;
-
-				h2 {
-					animation: textBounce 1000ms ease-in-out 4,
-								textColors 4s 2;
-				}
+				animation: textBounce 1000ms ease-in-out 4,
+							textColors 4s 2;
 			}
 		}
 
@@ -81,18 +78,23 @@ content {
 		left: 13px;
 		width: 269px;
 		height: 529px;
+		z-index: 2;
 		background: rgba(#111,.35);
 		backdrop-filter: blur(23px);
 		border-radius: 3px;
 		pointer-events: none;
 		padding-top: 137px;
 		text-align: center;
+		perspective: 100px;
 
 		h2 {
 			font-size: 53px;
 		}
 
 		h3 {
+			display: none;
+			position: relative;
+			transform: translateZ(0);
 			margin-top: 23px;
 			font-size: 31px;
 		}
@@ -103,6 +105,7 @@ content {
 		top: 0;
 		left: 0;
 		right: 0;
+		bottom: 0;
 		z-index: 100;
 
 		> .before,

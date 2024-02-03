@@ -62,10 +62,13 @@ let Game = {
 				}
 				break;
 			case "game-over":
-				// playing view
-				APP.content.data({ show: "game-over" });
 				// stop loop
 				this.fpsControl.stop();
+				setTimeout(() => {
+					// playing view
+					APP.content.data({ show: "game-over" });
+					APP.content.addClass("show-fireworks");
+				}, 500);
 				break;
 		}
 	},
