@@ -4,7 +4,7 @@ let Test = {
 
 		// setTimeout(() => window.el.cssSequence("bounce", "animationend", el => el.removeClass("bounce")), 1000);
 
-		// return;
+		return;
 		setTimeout(() => {
 			// Game.setState("start");
 			// Game.setState("play");

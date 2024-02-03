@@ -39,6 +39,18 @@ let Game = {
 				this.fpsControl.start();
 				this._state = "play";
 				break;
+			case "start":
+				// stop loop, if not stopped
+				this.fpsControl.stop();
+				// reset flag
+				delete this._state;
+				// remove timer
+				clearTimeout(this.timer);
+				// empty arena
+				Arena.reset();
+				// start view
+				APP.content.data({ show: "start" });
+				break;
 			case "reset":
 				// stop loop, if not stopped
 				this.fpsControl.stop();
@@ -73,6 +85,7 @@ let Game = {
 				}
 				break;
 			case "game-over":
+				let msec = 5000;
 				// stop loop
 				this.fpsControl.stop();
 				setTimeout(() => {
@@ -88,8 +101,12 @@ let Game = {
 						// DOM update
 						Arena.els.score.html(Player.score);
 						Arena.els.highScore.html(Player.highscore);
+						// longer timer for fireworks
+						msec = 10000;
 					}
-				}, 500);
+					// show start view after certain time
+					this.timer = setTimeout(() => this.setState("start"), msec);
+				}, 750);
 				break;
 		}
 	},

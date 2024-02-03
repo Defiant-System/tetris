@@ -37,6 +37,8 @@ const tetris = {
 			case "window.init":
 				break;
 			case "window.keystroke":
+				if (event.char === "esc") Game.setState("reset");
+				if (Game._state !== "play") return;
 				switch (event.char) {
 					case "w":
 					case "up": Player.rotate(); break;
@@ -46,17 +48,18 @@ const tetris = {
 					case "left": Player.shift(-1); break;
 					case "d":
 					case "right": Player.shift(1); break;
-
 					case "space": Player.hardDrop(); break;
 					case "shift": Player.switchPiece(); break;
 
-					case "esc": Game.setState("reset"); break;
 					case "p": Game.setState("pause"); break;
 				}
 				break;
 			// custom events
+			case "goto-start":
+				Game.setState("start");
+				break;
 			case "new-game":
-				Game.setState("new");
+				Game.setState("play");
 				break;
 			case "pause-game":
 				Game.setState("pause");

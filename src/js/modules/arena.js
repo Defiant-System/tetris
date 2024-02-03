@@ -56,6 +56,8 @@ let Arena = {
 		if (!Player.held) Player.held = Arena.randomPiece({ loc: "hold" });
 	},
 	reset() {
+		// reset canvas
+		this.cvs.attr({ width: this.width });
 		// blank level
 		this.matrix.forEach(row => row.fill(0));
 		// reset player
