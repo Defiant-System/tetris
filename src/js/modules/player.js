@@ -94,7 +94,7 @@ let Player = {
 			Game.setState("game-over");
 		}
 	},
-	rotate(dir) {
+	rotate(dir=1) {
 		for(let y=0; y<this.active.matrix.length; ++y) {
 			for(let x=0; x<y; ++x) {
 				[
@@ -106,7 +106,6 @@ let Player = {
 				];
 			}
 		}
-		
 		if (dir > 0) {
 			this.active.matrix.forEach(row => row.reverse());
 		} else {
