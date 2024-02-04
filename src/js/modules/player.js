@@ -71,7 +71,9 @@ let Player = {
 		}
 		this.drop();
 	},
-	merge() { 
+	merge() {
+		// make game go faster with each drop
+		dropInterval = Math.max(dropInterval - 2, fastestInterval);
 		this.active.matrix.forEach((row, y) => {
 			row.forEach((value, x) => {
 				if (value !== 0) {
