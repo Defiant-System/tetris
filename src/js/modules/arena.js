@@ -67,6 +67,10 @@ let Arena = {
 		// empty "held" & "next"
 		this.els.next.data({ shape: "0" });
 		this.els.hold.data({ shape: "0" });
+		// sidebar update
+		this.els.score.html("0");
+		this.els.level.html("0");
+		this.els.lines.html("0");
 	},
 	draw(ctx) {
 		// draw matrix
@@ -140,9 +144,6 @@ let Arena = {
 		}
 		// play sound
 		if (rows) {
-			if (rows === 4) {
-				window.el.cssSequence("bounce", "animationend", el => el.removeClass("bounce"));
-			}
 			window.audio.play("bricks");
 		}
 	}

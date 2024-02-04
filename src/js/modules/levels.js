@@ -28,7 +28,7 @@ levels[i].push("1230067112");
 
 // level 1
 i = levels.push([])-1;
-levels[i].push({ pos: { x: 3, y: -1 }, shape: "I" });
+levels[i].push({ pos: { x: 2, y: 12 }, shape: "I" });
 levels[i].push("0000000000");
 levels[i].push("0000000000");
 levels[i].push("0000000000");
@@ -43,12 +43,12 @@ levels[i].push("0000000000");
 levels[i].push("0000000000");
 levels[i].push("0000000000");
 levels[i].push("0000000000");
-levels[i].push("0000000000");
-levels[i].push("0020000000");
+levels[i].push("0010000220");
+levels[i].push("0120002120");
 levels[i].push("6711026712");
 levels[i].push("6711021712");
-levels[i].push("6711026012");
-levels[i].push("6711020712");
+levels[i].push("6711026112");
+levels[i].push("6711022712");
 
 // level 2
 i = levels.push([])-1;

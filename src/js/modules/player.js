@@ -42,6 +42,9 @@ let Player = {
 	drop() { 
 		this.pos.y++; 
 		if (removeRows.length) {
+			if (removeRows.length === 4) {
+				window.el.cssSequence("tremble", "animationend", el => el.removeClass("tremble"));
+			}
 			Arena.rowsRemove();
 		}
 		if (this.collisionCheck()) {
