@@ -12,6 +12,7 @@ let Game = {
 			fps: 60,
 			callback(time, delta) {
 				dropCount += delta;
+				dropInterval = Math.max(dropInterval - 1, fastestInterval);
 				if (dropCount > Math.max((dropInterval - (level * 60)), 60)) {
 					Player.drop();
 				}

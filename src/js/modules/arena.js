@@ -18,7 +18,8 @@ let removeRows = [];
 // Player Piece drop timer
 let lastTime = 0;
 let dropCount = 0;
-let dropInterval = 500;
+let dropInterval = 550;
+let fastestInterval = 300;
 
 let Arena = {
 	init() {
