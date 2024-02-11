@@ -161,8 +161,12 @@ content {
 		font-size: 103px;
 		pointer-events: none;
 		--speed: 750ms;
+		min-height: 1px;
+		transition: min-height calc( var( --speed ) * 3 ) linear;
 
 		&.start {
+			min-height: 2px;
+
 			span {
 				animation: countdown var( --speed ) ease-in-out forwards;
 

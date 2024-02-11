@@ -42,11 +42,9 @@ let Arena = {
 		this.matrix = this.createMatrix(10, 20);
 	},
 	countdown(callback) {
-		this.els.countdown.cssSequence("start", "animationend", el => {
-			if (el.hasClass("tick-1")) {
-				el.parent().removeClass("start");
-				callback();
-			}
+		this.els.countdown.cssSequence("start", "transitionend", el => {
+			el.parent().removeClass("start");
+			callback();
 		});
 	},
 	level(i) {
