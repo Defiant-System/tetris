@@ -151,7 +151,7 @@ let Player = {
 		while (this.collisionCheck()) {
 			this.pos.x += offset;
 			offset = -(offset + (offset > 0 ? 1 : -1));
-			if (offset > this.matrix[0].length) {
+			if (offset > this.active.matrix[0].length) {
 				this.switchPiece();
 				this.pos.x = pos;
 				return;
