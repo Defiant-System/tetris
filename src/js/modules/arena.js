@@ -43,7 +43,7 @@ let Arena = {
 	},
 	countdown(callback) {
 		this.els.countdown.cssSequence("start", "transitionend", el => {
-			el.parent().removeClass("start");
+			el.removeClass("start");
 			callback();
 		});
 	},
